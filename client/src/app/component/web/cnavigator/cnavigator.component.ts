@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cnavigator',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CnavigatorComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  producto(){
+    this.router.navigate(['/productos']);
   }
 
 }

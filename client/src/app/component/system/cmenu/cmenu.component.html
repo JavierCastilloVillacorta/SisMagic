@@ -1,0 +1,146 @@
+<div class="page-wrapper chiller-theme toggled">
+  <!-- Menu al Ocultarse -->
+  <a id="show-sidebar" class="btn btn-sm c-navbar zindex" routerLink="#">
+    <i class="material-icons icon-larg">dehaze</i>
+  </a>
+  <!-- Menu Desplegarse -->
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+          <a href="#">ADMINISTRADOR</a>
+
+          
+          <div id="close-sidebar">
+            <i class="material-icons">close</i>
+          </div>
+      </div>
+
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+                alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">Orlando
+            <strong>El Mago</strong>
+          </span>
+          <span class="user-role">Administrator</span>
+        </div>
+      </div>
+      <!-- ***************************  -->
+      <div class="sidebar-menu">
+        <ul>
+          <li class="sidebar-dropdown">
+            <a routerLink="#"><i class="material-icons">settings</i>
+                <span>CONFIGURACIÓN</span>
+            </a>
+
+            <div class="sidebar-submenu">
+              <li *ngFor="let itm of confiMenu" >
+
+              </li>
+
+              <ul>
+                <li><a routerLink="#">Establecimientos</a></li>
+                <li><a routerLink="#">Productos</a></li>
+                <li><a routerLink="#">Vehiculos</a></li>
+                <li><a routerLink="#">Cuentas y Caja</a></li>
+                <li><a routerLink="#">Usuarios</a></li>
+                <li><a routerLink="#">Clientes</a></li>
+                <li><a routerLink="#">Proveedores</a></li>
+                <li><a routerLink="#">Talleres</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a routerLink="#"><i class="material-icons">local_atm</i>
+              <span>CAJA</span>
+            </a>
+
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a routerLink="#">Caja 01</a></li>
+                <li><a routerLink="#">Caja 02</a></li>
+                <li><a routerLink="#">Caja 03</a></li>
+                <li><a routerLink="#">Caja 04</a></li>
+               </ul>
+            </div>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a routerLink="#"><i class="material-icons">attach_money</i>
+              <span>VENTAS</span>
+            </a>
+            
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a routerLink="#">Ventas 01</a></li>
+                <li><a routerLink="#">Ventas 02</a></li>
+                <li><a routerLink="#">Ventas 03</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a routerLink="#">
+              <i class="material-icons">view_comfy</i><span>LOGISTICA</span>
+            </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li><a routerLink="#">Logistica 01</a></li>
+                  <li><a routerLink="#">Logistica 02</a></li>
+                  <li><a routerLink="#">Logistica 03</a></li>
+                </ul>
+              </div>
+          </li>
+             
+        </ul>
+
+            
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- sidebar-wrapper  -->
+  <main class="page-content pt-0">
+  <!--  **********************************************  -->
+  <nav class="navbar navbar-expand-lg navbar-dark c-navbar p-0">         
+    <a class="navbar-brand" href="#">
+      <img src="../../../../assets/img/logo.png" class="d-inline-block align-top img-slogo" alt="">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <h6 class="info-s">SISMAGIC V 0.001</h6>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0 info">
+
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item itm-m c-menssage">
+              <i class="material-icons">chat</i>
+              <span class="badge badge-pill c-cantn mitm">1</span>
+            </li>
+
+            <li class="nav-item itm-m c-alert">
+              <i class="material-icons">notifications_active</i>
+              <span class="badge badge-pill c-cantn mitm">18</span>
+            </li>
+            
+            <li class="nav-item itm-m c-off">
+              <i class="material-icons">settings_power</i>
+            </li>
+          </ul>
+
+        </form>
+    </div>
+  </nav>
+  <!-- ************************************************ -->
+
+    
+  </main>
+</div>
+
+

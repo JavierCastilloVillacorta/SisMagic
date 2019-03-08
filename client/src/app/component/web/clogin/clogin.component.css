@@ -1,0 +1,35 @@
+.minh-100 {
+    height: 90vh;
+  }
+  
+.col-gb{
+    background: #252440;
+}
+
+.bg-fondo{
+    background-image: url("../../../../assets/img/web/cabeceraLogin.png");
+    background-size: 100% 100%;
+    width: 100%;
+    height: 80px;
+}
+
+.logo-img{
+    max-width: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.col-btn{
+    background: #e4540b;
+}
+
+.btn-border{
+    -webkit-box-shadow: 2px 2px rgba(245,170,133,1);
+    -moz-box-shadow: 2px 2px rgba(245,170,133,1);
+    box-shadow: 2px 2px rgba(245,170,133,1);
+}
+
+.p-btn{
+    padding: 5px 20px 5px 20px;
+}
