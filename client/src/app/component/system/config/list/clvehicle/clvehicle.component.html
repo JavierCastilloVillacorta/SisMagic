@@ -1,0 +1,20 @@
+
+<div class="container">
+              
+  <div class="col-12 c-orange1 text-center p-2">
+      <span class="title1"> Listado de Vehiculo</span>
+  </div>
+
+  <ol id="lista3" class="c-cont">
+
+    <li *ngFor="let vehicle of jsonVehicle | filterVehicle: filterVehicle " (click)="clickListVehicle(vehicle)"> 
+      <div>
+       <i class="material-icons p-relative" [ngClass]="{estateTipe: vehicle.stateVehicle  == 2}" >bookmark</i> 
+       <span> {{vehicle.nameBrand}} - {{vehicle.nameModel}}  </span>  
+       </div>
+    </li>
+
+   
+</ol>
+
+</div>

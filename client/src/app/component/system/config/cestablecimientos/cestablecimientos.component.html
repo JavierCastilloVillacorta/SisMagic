@@ -1,0 +1,80 @@
+<div class="container-fluid d-flex justify-content-end pt-5">
+  <div id="cont-generalsist" class="cont-general cont-general1">
+    <hr>
+      <!-- page-content -->   
+        <div class="row">
+          <div class=" col-12 col-sm-5 col-md-4">
+            <!-- Buscador Establecimientos-->
+            <app-cbestableciminetos
+            *ngIf="itemEstablecer"
+            (searchText)="onsearch($event)"
+            (newForm)="onnewForm($event)"
+            ></app-cbestableciminetos>
+            <!-- Listado Establecimientos -->
+            <app-clestableciminetos
+            *ngIf="itemEstablecer"
+            [storeTotal] = "storeTotal"
+            [filterName] = "filterName"
+            (clickOupPrimary)="clickOupPrimary($event)"
+            (clickOupSecondaty)="clickOupSecondaty($event)"
+            ></app-clestableciminetos>
+             <!-- Buscador Almacenes-->
+            <app-cbwarehouse
+            *ngIf="itemWareHause"
+            (searchWareHouse) ="searchWareHouse($event)"
+            (newWareHouseForm) = "newWareHouseForm($event)"
+            >
+            </app-cbwarehouse>
+            <!-- Listado Alamcenes -->
+            <app-clwarehouse
+            *ngIf="itemWareHause"
+            [warehouseTotal] = "warehouseTotal"
+            [filterWareH] = "filterWareH"
+            (clickOupWareHouse) = "clickOupWareHouse($event)"
+            ></app-clwarehouse>
+
+
+          </div>
+
+          <div class=" col-12 col-sm-7 col-md-8">
+            <div class="row c-plomo1 mr-2">
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active font-l" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"
+                    (click)="menuEstablecer()"
+                    >
+                      Establecimientos
+                    </a>
+                    <a class="nav-item nav-link font-l" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"
+                    (click)="menuWareHause()"
+                    >
+                      Almacenes
+                    </a>
+                  </div>
+                </nav>
+                <div class="row col-12 tab-content m-0" id="nav-tabContent">
+                  <div class="tab-pane fade show active row col-12 m-0" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <!-- Formulario Establecimientos-->
+                    <app-cfestableciminetos
+                    (neweStablecerMatrix) = "neweStablecerMatrix($event)"
+                    (newStore) = "newStore($event)"
+                    [datosStore] = "datosStore"
+                    [establecerMatrixf] = "establecerMatrix"
+                    ></app-cfestableciminetos>
+     
+                  </div>
+                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <!-- Formulario Almacenes-->
+                    <app-cfwarehouse
+                    [datosWarehouse] = "datosWarehouse"
+                    (newFormWareHouse) = "newFormWareHouse($event)"
+                    [establecerMatrixf] = "establecerMatrix"
+                    ></app-cfwarehouse>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    <hr>
+  </div>
+</div> 

@@ -1,0 +1,63 @@
+<div class="row m-0 pt-5">
+    <h5 class="text-center tm-100">Datos de Equivalencia</h5>
+    <form (ngSubmit)="onSaveEquivalences()" #f="ngForm" class="row col-12">
+  
+      <div class="col-12 col-sm-12 col-md-6">
+  
+  
+        <div class="form-group mb-1">
+          <label for="RasonSocila" class="m-0">Codigo Equivalencia: </label>
+          <input 
+          name="codEquivalence"
+          [(ngModel)] = "datosEquivalences.codEquivalence"
+          [ngClass]="{error: !valCodEquivalence}" 
+          type="text" class="form-control h-caja" id="rasonSocial" placeholder="Cod Fabrica" >
+        </div>
+
+        <div class="form-group mb-1">
+          <label for="Direccion" class="m-0">Descripcion: </label>
+          <textarea 
+          name="descriptionEquivalence"
+          [(ngModel)] = "datosEquivalences.descriptionEquivalence"
+          class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
+        </div>
+  
+      </div>
+  
+      <div class="col-12 col-sm-12 col-md-6">
+
+          <div class="form-group mb-1">
+            <label for="RasonSocila" class="m-0">Codigo Fabrica: </label>
+            <input 
+            name="codFrabricEquivalence"
+            [(ngModel)] = "datosEquivalences.codFrabricEquivalence"
+            [ngClass]="{error: !valCodFrabricEquivalence}" 
+            type="text" class="form-control h-caja" id="rasonSocial" placeholder="Cod Fabrica" >
+          </div>
+                         
+        
+          <div class="form-group mb-1">
+            <label for="Estado" class="m-0">Estado: </label>
+            <select 
+            name="stateEquivalence"
+            [(ngModel)] = "datosEquivalences.stateEquivalence"
+            class="form-control h-caja" id="estado">
+              <option value="1">Activo</option>
+              <option value="2" >Inactivo</option>
+            </select>
+          </div>
+        
+  
+      </div>
+  
+      
+      <div class="text-center p-2">
+          <button type="submit" id="btn" gtipo="Guardar" class="btn btn-outline btn-success pl-5 pr-5 ml-2 font-12">
+             {{datosEquivalences.btnName}}
+          </button>
+      </div>
+  
+      
+  
+    </form>
+  </div>

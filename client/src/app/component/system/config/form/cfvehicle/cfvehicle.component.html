@@ -1,0 +1,179 @@
+<div class="row m-0 pt-5">
+  <h5 class="text-center tm-100">Datos de Marca de Vehiculo</h5>
+  
+
+  <form (ngSubmit)="onSaveVehicle()" #f="ngForm" class="row col-12">
+
+    <div class="col-12 col-sm-12 col-md-6">
+
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Modelo: </label>
+        <input 
+        name="nameModel"
+        [(ngModel)] = "datosVehicle.nameModel" 
+        (click)="toAutoCompModel()"  
+        (keydown)="onKeydown($event)"
+        [ngClass]="{error: !valNameModel}" 
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Modelo" autocomplete="off" >
+        
+        <div 
+        class="c-autocomplete"
+        *ngIf="menuModel">
+        <li 
+        *ngFor="let modelVehicle of jsonModelVehicle | filtermodelVehicle: datosVehicle.nameModel " (click)="rescatadatoModel(modelVehicle)"
+        class = "item-autocomplete"
+        >
+          <i class="material-icons p-relative">view_module</i> 
+          <span> {{modelVehicle.nameModel}} </span>  
+        </li>
+        </div>
+      </div>
+
+
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Marca: </label>
+        <input 
+        name="nameBrandV"
+        [(ngModel)] = "datosVehicle.nameBrandV" 
+        (click)="toAutoCompBrand()"  
+        (keydown)="onKeydown($event)"
+        [ngClass]="{error: !valNameBrandV}" 
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Marca" autocomplete="off" >
+        
+        <div 
+        class="c-autocomplete"
+        *ngIf="menuBrand">
+        <li 
+        *ngFor="let brandVehicle of jsonBrandVehicle | filterbrandVehicle: datosVehicle.nameBrandV " (click)="rescatadatoBrand(brandVehicle)"
+        class = "item-autocomplete"
+        >
+          <i class="material-icons p-relative">directions_car</i> 
+          <span> {{brandVehicle.nameBrandV}} </span>  
+        </li>
+        </div>
+      </div>
+
+
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Combustible: </label>
+        <input 
+        name="nameGas"
+        [(ngModel)] = "datosVehicle.nameGas" 
+        (click)="toAutoCompGas()"  
+        (keydown)="onKeydown($event)"
+        [ngClass]="{error: !valNameGas}" 
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Combustible" autocomplete="off" >
+        
+        <div 
+        class="c-autocomplete"
+        *ngIf="menuGas">
+        <li 
+        *ngFor="let gas of jsonGas | filtergas: datosVehicle.nameGas " (click)="rescatadatoGas(gas)"
+        class = "item-autocomplete"
+        >
+          <i class="material-icons p-relative">local_gas_station</i> 
+          <span> {{gas.nameGas}} </span>  
+        </li>
+        </div>
+      </div>
+
+
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Motor: </label>
+        <input 
+        name="nameEngine"
+        [(ngModel)] = "datosVehicle.nameEngine" 
+        (click)="toAutoCompEngine()"  
+        (keydown)="onKeydown($event)"
+        [ngClass]="{error: !valNameEngine}" 
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Motor" autocomplete="off" >
+        
+        <div 
+        class="c-autocomplete"
+        *ngIf="menuEngine">
+        <li 
+        *ngFor="let engineVehicle of jsonEngineVehicle | filterengineVehicle: datosVehicle.nameEngine " (click)="rescatadatoEngine(engineVehicle)"
+        class = "item-autocomplete"
+        >
+          <i class="material-icons p-relative">view_module</i> 
+          <span> {{engineVehicle.nameEngine}} </span>  
+        </li>
+        </div>
+      </div>
+
+      <div class="form-group mb-1">
+        <label for="Estado" class="m-0">Estado: </label>
+        <select 
+        name="stateStore"
+        [(ngModel)] = "datosVehicle.stateVehicle"
+        class="form-control h-caja" id="estado">
+          <option value="1">Activo</option>
+          <option value="2" >Inactivo</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-6">
+             
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Diametro Vehiculo: </label>
+        <input 
+        name="diameterVehicle"
+        [(ngModel)] = "datosVehicle.diameterVehicle"
+        [ngClass]="{error: !valDiameterVehicle}" 
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Diametro Vehiculo" >
+      </div>
+
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Cilindro Vehiculo: </label>
+        <input 
+        name="cylinderVehicle"
+        [(ngModel)] = "datosVehicle.cylinderVehicle"
+        [ngClass]="{error: !valCylinderVehicle}" 
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Cilindro Vehiculo" >
+      </div>
+
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Desplazamiento Vehiculo: </label>
+        <input 
+        name="displacementVehicle"
+        [(ngModel)] = "datosVehicle.displacementVehicle"
+        [ngClass]="{error: !valDisplacementVehicle}" 
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Desplazamiento Vehiculo" >
+      </div>
+
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Año inicio: </label>
+        <input 
+        name="yearInit"
+        [(ngModel)] = "datosVehicle.yearInit"
+        [ngClass]="{error: !valYearInit}" 
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Año Inicio" >
+      </div>
+
+
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Año Fin: </label>
+        <input 
+        name="yearEnd"
+        [(ngModel)] = "datosVehicle.yearEnd"
+        [ngClass]="{error: !valYearEnd}" 
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Año Fin" >
+      </div>
+  
+      
+      
+    </div>
+
+
+    <div class="text-center p-2">
+        <button type="submit" id="btn" gtipo="Guardar" class="btn btn-outline btn-success pl-5 pr-5 ml-2 font-12">
+          {{datosVehicle.btnName}}
+        </button>
+    </div>
+
+    
+
+  </form>
+</div>

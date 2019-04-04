@@ -1,0 +1,17 @@
+
+<div class="container">
+              
+  <div class="col-12 c-orange1 text-center p-2">
+      <span class="title1"> Listado Super </span>
+  </div>
+  
+  <ol id="lista3" class="c-cont">
+    <li *ngFor="let superProduct of jsonSuperProduct | filtersuperProduct: filterSuperProductText" (click)="clicListSuperProduct(superProduct)" > 
+      <div>
+        <i class="material-icons p-relative" [ngClass]="{estateTipe: superProduct.stateSuper  == 2}">subject</i> 
+        <span> {{superProduct.nameSuper}} </span>  
+        </div>
+    </li>
+  </ol>
+  
+</div>

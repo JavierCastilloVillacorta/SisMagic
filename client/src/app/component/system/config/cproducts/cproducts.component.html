@@ -1,0 +1,240 @@
+
+<div class="container-fluid d-flex justify-content-end pt-5">
+  <div id="cont-generalsist" class="cont-general cont-general1">
+    <hr>
+      <!-- page-content -->   
+        <div class="row">
+          <div class=" col-12 col-sm-4 col-md-4">
+            <!-- Listado Establecimientos -->
+            <app-clproducts
+            *ngIf="menuProd"
+            [jsonProduct] = "jsonProduct"
+            [jsonVehicleProduct] = "jsonVehicleProduct"
+            [jsonEquivalenceProduct] = "jsonEquivalenceProduct"
+            [jsonGalleryProduct] = "jsonGalleryProduct"
+            [filterProductText] = "filterProductText"
+            [newfilterProductText] = "newfilterProductText"
+            (newFormProduct) = "newFormProduct($event)"
+            (clickOupListProduct) = "clickOupListProduct($event)"
+            (clickOupCopyProduct1) ="clickOupCopyProduct1($event)"
+            (clickOupCopyProduct2) = "clickOupCopyProduct2($event)"
+            (clickOupCopyProduct3) = "clickOupCopyProduct3($event)"
+            (clickOupCopyProEquivalence) = "clickOupCopyProEquivalence($event)"
+            (clickOupCopyProVehicle) = "clickOupCopyProVehicle($event)"
+            (clickOupCopyProGallery) = "clickOupCopyProGallery($event)"
+            ></app-clproducts>
+            <!-- Buscador Equivalencias -->
+            <app-cbequivalences
+            *ngIf="menuEquiv"
+            (newFormEquivalence) = "newFormEquivalence($event)"
+            (searchEquivalenceText) = "searchEquivalenceText($event)"            
+            ></app-cbequivalences>
+            <!-- Listado Equivalencias -->
+            <app-clequivalences
+            *ngIf="menuEquiv"
+            [filterEquivalencestext] = "filterEquivalencestext"
+            [jsonEquivalences] = "jsonEquivalences"
+            (clickOupListEquivalences) = "clickOupListEquivalences($event)"
+            ></app-clequivalences>
+
+            <!-- Buscador Unidad-->
+            <app-cbunitproduct
+            *ngIf="menuUnid"
+            (searchUnitProductText) = "searchUnitProductText($event)"
+            (newFormUnitProduct) = "newFormUnitProduct($event)"
+            ></app-cbunitproduct>
+
+            <!-- Listado Unidad-->
+            <app-clunitproduct
+            *ngIf="menuUnid"
+            [filterUnitProductText] = "filterUnitProductText"
+            [jsonUnitProduct] = "jsonUnitProduct"
+            (clickOupListUnitProduct) = "clickOupListUnitProduct($event)"
+            ></app-clunitproduct>
+
+            <!-- Buscador Posicion-->
+            <app-cbpositionproduct
+            *ngIf="menuPosi"
+            (searchPositionProduct) = "searchPositionProduct($event)"
+            (newFormPositionProduct) = "newFormPositionProduct($event)"
+            ></app-cbpositionproduct>
+
+            <!-- Listado Posicion-->
+            <app-clpositionproduct
+            *ngIf="menuPosi"
+            [filterPositionProductText] = "filterPositionProductText"
+            [jsonPositionProduct] = "jsonPositionProduct"
+            (clickOupListPositionProduct) = "clickOupListPositionProduct($event)"
+            ></app-clpositionproduct>
+
+            <!-- Buscador Super-->
+            <app-cbsuperproduct
+            *ngIf="menuSup"
+            (searchSuperProductText) = "searchSuperProductText($event)"
+            (newFormSuperProduct) = "newFormSuperProduct($event)"
+            ></app-cbsuperproduct>
+
+            <!-- Listado Super-->
+            <app-clsuperproduct
+            *ngIf="menuSup"
+            [filterSuperProductText] = "filterSuperProductText"
+            [jsonSuperProduct] = "jsonSuperProduct"
+            (clickOupSuperProduct) = "clickOupSuperProduct($event)"
+            ></app-clsuperproduct>
+
+            <!-- Buscador Categorias-->
+            <app-cbcategories
+            *ngIf="menuCate"
+            (newFormCategory) ="newFormCategory($event)"
+            (searchCatText) ="searchCatText($event)"            
+            ></app-cbcategories>
+            <!-- Listado Categorias -->
+            <app-clcategories
+            *ngIf="menuCate"
+            [jsonCategory] = "jsonCategory"
+            [filterCat] = "filterCat"
+            (clickOupListCat) = "clickOupListCat($event)"
+            ></app-clcategories>
+            <!-- Buscador Marcas -->
+            <app-cbbrands
+            *ngIf="menuBrand"
+            (searchBrandProductText) ="searchBrandProductText($event)"
+            (newFormBrandProduct) = "newFormBrandProduct($event)"
+            ></app-cbbrands>
+            <!-- Listado Marcas-->
+            <app-clbrands
+            *ngIf="menuBrand"
+            [jsonBrandsProduct] = "jsonBrandsProduct"
+            [filterBrandText] = "filterBrandText"
+            (clickOupBrProduct) = "clickOupBrProduct($event)"
+            ></app-clbrands>
+
+
+          </div>
+
+          <div class=" col-12 col-sm-8 col-md-8">
+            <div class="row c-plomo1 mr-2">
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active font-l" id="nav-home-tab" data-toggle="tab" href="#product" role="tab"
+                    (click)="menuProduct()"
+                    >
+                      Productos
+                    </a>
+                    <a class="nav-item nav-link font-l" id="nav-profile-tab" data-toggle="tab" href="#equivalences" role="tab"
+                    (click)="menuEquivalences()"
+                    >
+                      Equivalencias
+                    </a>
+                    <a class="nav-item nav-link font-l" id="nav-profile-tab" data-toggle="tab" href="#unidad" role="tab"
+                    (click)="menuUnidad()"
+                    >
+                      Unidad
+                    </a>
+                    <a class="nav-item nav-link font-l" id="nav-profile-tab" data-toggle="tab" href="#posicion" role="tab"
+                    (click)="menuPosicion()"
+                    >
+                      Posicion
+                    </a>
+                    <a class="nav-item nav-link font-l" id="nav-profile-tab" data-toggle="tab" href="#super" role="tab"
+                    (click)="menuSuper()"
+                    >
+                      Super
+                    </a>
+
+                    <a class="nav-item nav-link font-l" id="nav-profile-tab" data-toggle="tab" href="#category" role="tab"
+                    (click)="menuCategory()"
+                    >
+                      Categorias
+                    </a>
+                    <a class="nav-item nav-link font-l" id="nav-profile-tab" data-toggle="tab" href="#brands" role="tab"
+                    (click)="menuBrands()"
+                    >
+                      Marcas
+                    </a>
+                  </div>
+                </nav>
+                <div class="row col-12 tab-content m-0" id="nav-tabContent">
+                  <div class="tab-pane fade show active row col-12 m-0" id="product" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <!-- Buscador Productos-->            
+                    <app-cbproducts
+                    (searchProductText) = "searchProductText($event)"
+                    ></app-cbproducts>
+                    <!-- Formulario Productos-->
+                    <app-cfproducts
+                    [jsonProduct] = "jsonProduct"
+                    [datosProduct] = "datosProduct"
+                    [jsonBrandVehicle] = "jsonBrandVehicle"
+                    [jsonCategory] = "jsonCategory"
+                    [jsonPositionProduct] = "jsonPositionProduct"
+                    [jsonSuperProduct] = "jsonSuperProduct"
+                    [jsonBrandsProduct] = "jsonBrandsProduct"
+                    [jsonUnitProduct] = "jsonUnitProduct"
+
+                    [datosVehicleNewProduct] = "datosVehicleNewProduct"
+                    [datosEquivalenceProduct] = "datosEquivalenceProduct"
+                    [datosGalleryProduct] = "datosGalleryProduct"
+
+                    [jsonEquivalencesForm] = "jsonEquivalencesForm"
+                    [jsonEquivalenceProduct] = "jsonEquivalenceProduct"
+                    [jsonVehicleForm] = "jsonVehicleForm"
+                    [jsonVehicleProduct] = "jsonVehicleProduct"
+                    [jsonGalleryProduct] = "jsonGalleryProduct"
+       
+                  
+                    ></app-cfproducts>
+     
+                  </div>
+                  <div class="tab-pane fade" id="equivalences" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <!-- Formulario Equivalencias -->
+                    <app-cfequivalences
+                    [datosEquivalences] = "datosEquivalences"
+                    (saveEquivalences) = "saveEquivalences($event)"
+                    ></app-cfequivalences>
+                  </div>
+
+                  <div class="tab-pane fade" id="unidad" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <!-- Formulario Unidad-->
+                    <app-cfunitproduct
+                    [datosUnitProduct] = "datosUnitProduct"
+                    (saveUnitProduct) = "saveUnitProduct($event)"
+                    ></app-cfunitproduct>
+                  </div>
+
+                  <div class="tab-pane fade" id="posicion" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <!-- Formulario Posicion-->
+                    <app-cfpositionproduct
+                    [datosPositionProduct] = "datosPositionProduct"
+                    (savePositionProduct) = "savePositionProduct($event)"
+                    ></app-cfpositionproduct>
+                  </div>
+
+                  <div class="tab-pane fade" id="super" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <!-- Formulario Super-->
+                    <app-cfsuperproduct
+                    [datosSuperProduct] = "datosSuperProduct"
+                    (saveSuperProduct) = "saveSuperProduct($event)"
+                    ></app-cfsuperproduct>
+                  </div>
+
+                  <div class="tab-pane fade" id="category" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <!-- Formulario Categorias-->
+                    <app-cfcategories
+                    [datosCategory] = "datosCategory"
+                    (saveCategory) = "saveCategory($event)"
+                    ></app-cfcategories>
+                  </div>
+                  <div class="tab-pane fade" id="brands" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <!-- Formulario Marcas-->
+                    <app-cfbrands
+                    [datosbrandProduct] = "datosbrandProduct"
+                    (saveBrandProduct) = "saveBrandProduct($event)"
+                    ></app-cfbrands>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    <hr>
+  </div>
+</div> 

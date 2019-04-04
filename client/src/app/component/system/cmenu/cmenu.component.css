@@ -290,7 +290,7 @@
   /*----------------------  CSS  -------------------------*/
 
 .zindex{
-    z-index: 1;
+    z-index: 9;
 }
 
 .img-slogo{
@@ -324,27 +324,13 @@
   margin-left: -19px;
 }
 
-.c-navbar{
-  background: #ed6521;
-}
-
-.c-menssage{
-  background: #128351
-}
-
-.c-alert{
-  background: #007cff;
-}
-
-.c-off{
-  background: #7c2525;
-}
-
-.c-cantn{
-  background: red;
-}
 
 .info ul li:hover {
   background: #000;
   cursor: pointer;
+}
+
+.nav-p{
+  width: 100% !important;
+  z-index: 5;
 }

@@ -1,0 +1,957 @@
+<div class="row ">
+    <div class="col-12 col-md-12 border-b mt-2 rounded p-2">
+      <h6 class="text-center ">DETALLES DE ARTICULOS</h6>
+      <form (ngSubmit)="onSaveProduct()" #f="ngForm">
+        <div class="form-row">
+
+          <div class="col-12 col-sm-12 col-md-6">
+  
+            <div class="form-group mb-1">
+
+              <label for="RasonSocila" class="m-0">Marca Vehiculo: </label>
+              <input 
+              name="nameBrandV"
+              [(ngModel)] = "datosProduct.nameBrandV"
+              (click)="toAutoCompBrandVehicle()"  
+              (keydown)="onKeydown($event)"
+              [ngClass]="{error: !valNameBrandV}" 
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Marca" autocomplete="off">
+                
+              <div 
+                class="c-autocomplete"
+                *ngIf="menuBrandVehicle">
+                <li 
+                *ngFor="let brandVehicle of jsonBrandVehicle | filterbrandVehicle: datosProduct.nameBrandV " (click)="rescatadatoNameBrand(brandVehicle)"
+                class = "item-autocomplete"
+                >
+                  <i class="material-icons p-relative">view_module</i> 
+                  <span> {{brandVehicle.nameBrandV}} </span>  
+                </li>
+              </div>
+
+            </div>
+
+            <div class="form-group mb-1">
+              
+              <label for="RasonSocila" class="m-0">Categoria: </label>
+              <input 
+              name="nameCategory"
+              [(ngModel)] = "datosProduct.nameCategory"
+              (click)="toAutoCompCatProduct()"  
+              (keydown)="onKeydown($event)"
+              [ngClass]="{error: !valNameCategory}" 
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Categorias" autocomplete="off">
+                
+              <div 
+                class="c-autocomplete"
+                *ngIf="menuCatProduct">
+                <li 
+                *ngFor="let category of jsonCategory | filtercategories: datosProduct.nameCategory " (click)="rescatadatoNameCategory(category)"
+                class = "item-autocomplete"
+                >
+                  <i class="material-icons p-relative">view_module</i> 
+                  <span> {{category.nameCategory}} </span>  
+                </li>
+              </div>
+
+            </div>
+
+            <div class="form-group mb-1">
+              
+              <label for="RasonSocila" class="m-0">Posición Producto: </label>
+              <input 
+              name="namePosition"
+              [(ngModel)] = "datosProduct.namePosition"
+              (click)="toAutoCompPosProduct()"  
+              (keydown)="onKeydown($event)"
+              [ngClass]="{error: !valNamePosition}" 
+              (keyup)="PositionkeyUp()"
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Categorias" autocomplete="off">
+                
+              <div 
+                class="c-autocomplete"
+                *ngIf="menuPosProduct">
+                <li 
+                *ngFor="let positionProduct of jsonPositionProduct | filterpositionProduct: datosProduct.namePosition " (click)="rescatadatoPositionProduct(positionProduct)"
+                class = "item-autocomplete"
+                >
+                  <i class="material-icons p-relative">view_module</i> 
+                  <span> {{positionProduct.namePosition}} </span>  
+                </li>
+              </div>
+
+            </div>
+  
+
+            <div class="form-group mb-1">
+              
+              <label for="RasonSocila" class="m-0">Super: </label>
+              <input 
+              name="nameSuper"
+              [(ngModel)] = "datosProduct.nameSuper"
+              (click)="toAutoCompSuperProduct()"  
+              (keydown)="onKeydown($event)"
+              [ngClass]="{error: !valNameSuper}" 
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Categorias" autocomplete="off">
+                
+              <div 
+                class="c-autocomplete"
+                *ngIf="menuSuperProduct">
+                <li 
+                *ngFor="let superProduct of jsonSuperProduct | filtersuperProduct: datosProduct.nameSuper " (click)="rescatadatoSuperProduct(superProduct)"
+                class = "item-autocomplete"
+                >
+                  <i class="material-icons p-relative">view_module</i> 
+                  <span> {{superProduct.nameSuper}} </span>  
+                </li>
+              </div>
+
+            </div>
+
+            <div class="form-group mb-1">
+              
+              <label for="RasonSocila" class="m-0">Marca Producto: </label>
+              <input 
+              name="nameBrand"
+              [(ngModel)] = "datosProduct.nameBrand"
+              (click)="toAutoCompBrandProduct()"  
+              (keydown)="onKeydown($event)"
+              [ngClass]="{error: !valNameBrand}" 
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Marca Producto" autocomplete="off">
+                
+              <div 
+                class="c-autocomplete"
+                *ngIf="menuBrandProduct">
+                <li 
+                *ngFor="let brandProduct of jsonBrandsProduct | filterbrandProduct: datosProduct.nameSuper " (click)="rescatadatoBrandProduct(brandProduct)"
+                class = "item-autocomplete"
+                >
+                  <i class="material-icons p-relative">view_module</i> 
+                  <span> {{brandProduct.nameBrand}} </span>  
+                </li>
+              </div>
+
+            </div>
+
+            <div class="form-group mb-1">
+              <label for="RasonSocila" class="m-0">Alternate: </label>
+              <input 
+              name="alternatingProduct"
+              [(ngModel)] = "datosProduct.alternatingProduct"
+              [ngClass]="{error: !valAlternatingProduct}" 
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Alternate" >
+            </div>
+
+            <div class="form-group mb-1">
+              <label for="RasonSocila" class="m-0">Precio: </label>
+              <input 
+              name="priceProduct"
+              [(ngModel)] = "datosProduct.priceProduct"
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Categoria" >
+            </div>
+
+            <div class="form-group mb-1">
+              <label for="Direccion" class="m-0">Descripcion: </label>
+              <textarea 
+              name="descriptionProduct"
+              [(ngModel)] = "datosProduct.descriptionProduct"
+              class="form-control rounded-0 font-12 text-info" id="exampleFormControlTextarea2" rows="3"></textarea>
+            </div>
+
+    
+            
+          </div>
+    
+          <div class="col-12 col-sm-12 col-md-6">
+                  
+            <div class="form-group mb-1">
+              <label for="Estado" class="m-0">Estado: </label>
+              <select 
+              name="stateProduct"
+              [(ngModel)] = "datosProduct.stateProduct"
+              class="form-control h-caja text-info" id="estado">
+                <option value="1">Activo</option>
+                <option value="2" >Inactivo</option>
+              </select>
+            </div>
+
+            <div class="form-group mb-1">
+              
+              <label for="RasonSocila" class="m-0">Unidad: </label>
+              <input 
+              name="nameUnity"
+              [(ngModel)] = "datosProduct.nameUnity"
+              (click)="toAutoCompUnitProduct()"  
+              (keydown)="onKeydown($event)"
+              [ngClass]="{error: !valNameUnity}" 
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Unidad Producto" autocomplete="off">
+                
+              <div 
+                class="c-autocomplete"
+                *ngIf="menuUnitProduct">
+                <li 
+                *ngFor="let unitProduct of jsonUnitProduct | filterunitProduct: datosProduct.nameUnity " (click)="rescatadatoUnitProduct(unitProduct)"
+                class = "item-autocomplete"
+                >
+                  <i class="material-icons p-relative">view_module</i> 
+                  <span> {{unitProduct.nameUnity}} </span>  
+                </li>
+              </div>
+
+            </div>
+
+            <div class="form-group mb-1">
+              <label for="RasonSocila" class="m-0">Medida: </label>
+              <input 
+              name="measureProduct"
+              [(ngModel)] = "datosProduct.measureProduct"
+              [ngClass]="{error: !valMeasureProduct}" 
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Medida" >
+            </div>
+
+            <div class="form-group mb-1">
+              <label for="RasonSocila" class="m-0">Referencia A: </label>
+              <input 
+              name="referenceA"
+              [(ngModel)] = "datosProduct.referenceA"
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Categoria" >
+            </div>
+
+            <div class="form-group mb-1">
+              <label for="RasonSocila" class="m-0">Referencia B: </label>
+              <input 
+              name="referenceB"
+              [(ngModel)] = "datosProduct.referenceB"
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Categoria" >
+            </div>
+
+            <div class="form-group mb-1">
+              <label for="RasonSocila" class="m-0">Referencia C: </label>
+              <input 
+              name="referenceC"
+              [(ngModel)] = "datosProduct.referenceC"
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Categoria" >
+            </div>
+
+            <div class="form-group mb-1">
+                <label for="Estado" class="m-0">Tipo Producto: </label>
+                <select 
+                name="idTypeProduct"
+                [(ngModel)] = "datosProduct.idTypeProduct"
+                class="form-control h-caja text-info" id="estado">
+                  <option value="1">Producto</option>
+                  <option value="2" >Servicio</option>
+                </select>
+              </div>
+
+            <div class="form-group mb-1">
+              <label for="RasonSocila" class="m-0">Tipo Producto: </label>
+              <input 
+              name="referenciaTypeProduct"
+              [(ngModel)] = "datosProduct.referenciaTypeProduct"
+              type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Categoria" >
+            </div>
+          </div>
+    
+          <div class="text-center p-2">
+              <button type="submit" id="btn" gtipo="Guardar" class="btn btn-outline btn-success pl-5 pr-5 ml-2 font-12">
+                {{datosProduct.btnName}}
+              </button>
+          </div>
+    
+        </div>
+
+      </form>
+    </div>
+
+
+
+
+    <div class="row col-12 m-0 p-0 pt-2 mb-3">
+  
+      <div class="col-12 p-1 mt-4 bg-light">
+         
+        <div class="input-group d-flex justify-content-between">
+            <div class="c-orange1 text-center p-2 flex-g">
+                <span class="title1"> <strong class="text-white">Equivalencia</strong></span>      
+            </div>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-primary pt-0 pb-0 pl-2 pr-2 rounded-0 c-plomo text-white"
+                (click)="modalEquivalence()"
+                >
+                  Importar <i class="material-icons">plus_one</i>
+              </button>
+            </div>
+        </div>
+          
+
+        <table class="table table-hover pad-table text-center">
+          <thead class="c-orange text-white">
+            <tr>
+              <th scope="col">Codigo</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Cod. Fabr</th>
+            </tr>
+          </thead>
+          <tbody class="bg-light">
+            <tr *ngFor="let equivalenceProduct of datosEquivalenceProduct">
+              <td> {{equivalenceProduct.codEquivalence}} </td>
+              <td> {{equivalenceProduct.descriptionEquivalence}} </td>
+              <td> {{equivalenceProduct.codFrabricEquivalence}} </td>
+            </tr>
+            
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="col-12 p-1 mt-4 bg-light">
+         
+        <div class="input-group d-flex justify-content-between">
+            <div class="c-orange1 text-center p-2 flex-g">
+                <span class="title1"> <strong class="text-white">Automoviles</strong></span>      
+            </div>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-primary pt-0 pb-0 pl-2 pr-2 rounded-0 c-plomo text-white"
+                (click)="modalVehicle()"
+                >
+                 Importar <i class="material-icons">plus_one</i>
+              </button>
+            </div>
+        </div>
+          
+
+
+        <table class="table table-hover pad-table text-center">
+          <thead class="c-orange text-white">
+            <tr>
+              <th scope="col">Marca</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">Motor</th>
+              <th scope="col">Año Inicio</th>
+              <th scope="col">Año Fin</th>
+              <th scope="col">Combustible</th>
+              <th scope="col">Diametro</th>
+              <th scope="col">N° Cilindro</th>
+              <th scope="col">Cilindrada</th>
+            </tr>
+          </thead>
+          <tbody class="bg-light">
+            <tr  *ngFor="let vehicleProduct of datosVehicleNewProduct">
+              <th scope="col"> {{vehicleProduct.nameBrandV}} </th>
+              <th scope="col"> {{vehicleProduct.nameModel}} </th>
+              <th scope="col"> {{vehicleProduct.nameEngine}} </th>
+              <th scope="col"> {{vehicleProduct.yearInit}} </th>
+              <th scope="col"> {{vehicleProduct.yearEnd}} </th>
+              <th scope="col"> {{vehicleProduct.nameGas}} </th>
+              <th scope="col"> {{vehicleProduct.diameterVehicle}} </th>
+              <th scope="col"> {{vehicleProduct.cylinderVehicle}} </th>
+              <th scope="col"> {{vehicleProduct.displacementVehicle}} </th>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+
+      <div class="col-12 p-1 mt-4 bg-light">
+         
+        <div class="input-group d-flex justify-content-between">
+            <div class="c-orange1 text-center p-2 flex-g">
+                <span class="title1"> <strong class="text-white">Galeria</strong></span>      
+            </div>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-primary pt-0 pb-0 pl-2 pr-2 rounded-0 c-plomo text-white"
+                (click)="modalGallery()"
+                >
+                  Importar <i class="material-icons">plus_one</i>
+              </button>
+            </div>
+        </div>
+          
+        <!-- ********************************** -->
+
+        <div class="row m-1">
+          <div class="col-sm-3 imgUp" *ngFor="let galleryProduct of datosGalleryProduct" >
+            <div class="p-4"> <img [src]="galleryProduct.urlGallery" class="imgStore"></div>
+          </div>
+        </div>
+         
+        <!-- *********************************-->
+
+      </div>
+    
+      
+    
+    </div>
+    
+  </div>
+
+
+  <!-- Modal Equivalencias -->
+
+  <div class="row fixed-top cont-modal" *ngIf="valModalEquivalence">
+    <div class="col-12 col-md-12 mt-2 mb-2">  
+        <div class="container c-plomo2 pt-2 pb-2 overflow-form">
+            <h6 class="text-center text-white">IMPORTAR EQUIVALENCIAS</h6>
+            <div class="col-12 p-1 mt-4 bg-light tm-equivalenciastabla">
+              <div class="input-group d-flex justify-content-between">
+                  <div class="c-orange1 p-2 flex-g">
+                      <span class="title1"> <strong class="text-white">Equivalencia Existentes</strong></span>      
+                  </div>
+              </div>
+              <table class="table table-hover pad-table text-center">
+                <thead class="c-orange text-white">
+                  <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Cod. Fabr</th>
+                    <th scope="col">Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody class="bg-light">
+                  <tr *ngFor="let equivalenceProduct of datosEquivalenceProduct">
+                    <td> {{equivalenceProduct.codEquivalence}} </td>
+                    <td> {{equivalenceProduct.descriptionEquivalence}} </td>
+                    <td> {{equivalenceProduct.codFrabricEquivalence}} </td>
+                    <td (click)="RemoveEquivalence(equivalenceProduct)"> <i class="material-icons">close</i> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="row">
+                <div class="col-5 pt-4">
+                    <form class="altura-form">
+                      <div class="form-row">
+        
+                        <div class="form-group col-8 text-white">
+                          <label for="RasonSocila" class="m-0">Productos: </label>
+                          <input 
+                          name="filterModalproEquivalenceModal"
+                          [(ngModel)] = "filterModalproEquivalenceModal"
+                          type="text" class="form-control h-caja" id="rasonSocial" placeholder="Nombre"  (keyup)="searchEquivalenceProdModal()">
+                        </div>
+                        <!-- 
+                        <div class="form-group col-4 text-white">
+                          <label for="RasonSocila" class="m-0">Filtro: </label>
+                          <select 
+                          name="tipySearch"
+                          class="form-control h-caja" id="estado" >
+                            <option value="CC">Codigo Guardado</option>
+                            <option value="CB">Codigo Barras</option>
+                            <option value="CA">Codigo Producto</option>
+                            <option value="CE">Codigo Equivalencia</option>
+                            <option value="CM">Codigo Familia</option>
+                            <option value="CD">Codigo Medida</option>
+                            <option value="CT">Codigo Motor Modelo</option>
+                          </select>
+                        </div>
+                        -->
+                        <div class="col-12 p-1 mt-1 bg-light">
+                            <div class="input-group d-flex justify-content-between">
+                                <div class="c-orange1 p-2 flex-g">
+                                    <span class="title1"> <strong class="text-white">Productos</strong></span>      
+                                </div>
+                            </div>
+                            <table class="table table-hover pad-table text-center">
+                                <thead class="c-orange text-white">
+                                  <tr>
+                                    <th scope="col">Cod Producto</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Marca</th>
+                                    <th scope="col">Alternate</th>
+                                    <th scope="col">Cod Barras</th>
+                                  </tr>
+                                </thead>
+                                <tbody class="bg-light">
+                                  <tr *ngFor="let product of jsonProduct | filterproducts: newFilterModalproEquivalenceModal[0]" 
+                                  (click)="equivalenceProductModal(product)"
+                                  [ngClass]="{'active': selectedItemId === product.idProduct}" (click)="selectedItemId = product.idProduct"
+                                  >
+                                    <td> {{product.newCodeProduct}} </td>
+                                    <td> {{product.nameCategory}} </td>
+                                    <td> {{product.nameBrand}} </td>
+                                    <td> {{product.alternatingProduct}} </td>
+                                    <td> {{product.codBarProduct}} </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                          </div>
+                      </div>
+                    </form>
+        
+                  </div>
+        
+                  <div class="col-7 pt-4">
+                      <form class="altura-form">
+                          <div class="form-row">
+            
+                            <div class="form-group col-8 text-white">
+                              <label for="RasonSocila" class="m-0">Equivalencias: </label>
+                              <input 
+                              name="filterModalEquivalenceModal"
+                              [(ngModel)] = "filterModalEquivalenceModal"
+                              type="text" class="form-control h-caja" id="rasonSocial" placeholder="Codigo Fabrica" (keyup)="searchEquivalenceModal()"  >
+                            </div>
+                            <!-- 
+                            <div class="form-group col-4 text-white">
+                              <label for="RasonSocila" class="m-0">Filtro: </label>
+                              <select 
+                              name="tipySearch"
+                              class="form-control h-caja" id="estado" >
+                                <option value="CC">Codigo Equivalencia</option>
+                                <option value="CB">Codigo Descripcion</option>
+                                <option value="CA">Codigo Fabrica</option>
+                              </select>
+                           
+                            </div>
+                            -->
+                            <div class="col-12 p-1 mt-1 bg-light">
+                                <div class="input-group d-flex justify-content-between">
+                                    <div class="c-orange1 p-2 flex-g">
+                                        <span class="title1"> <strong class="text-white">Equivalencia</strong></span>      
+                                    </div>
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-outline-primary pt-0 pb-0 pl-2 pr-2 rounded-0 c-plomo text-white"
+                                        (click)="reloadEquivalence()"
+                                        >
+                                          <i class="material-icons">autorenew</i>
+                                      </button>
+                                    </div>
+                                </div>
+                                <table class="table table-hover pad-table text-center">
+                                    <thead class="c-orange text-white">
+                                      <tr>
+                                        <th scope="col">Codigo</th>
+                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Cod. Fabr</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody class="bg-light">
+                                      <tr *ngFor="let jsequivalence of newJsonEquivalencesForm | filterEquivalence: filterModalEquivalenceModal" (click)="AddEquivalence(jsequivalence)" >
+                                        <td> {{jsequivalence.codEquivalence}} </td>
+                                        <td> {{jsequivalence.descriptionEquivalence}} </td>
+                                        <td> {{jsequivalence.codFrabricEquivalence}} </td>
+                                     
+                                      </tr>
+                                      
+                                    </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                        </form>
+                  </div>
+              
+            </div>
+
+            <div class="text-center p-2">
+                <button type="submit" id="btn" gtipo="Guardar" class="btn btn-outline btn-success pl-5 pr-5 ml-2 font-12"
+                *ngIf="datosProduct.btnName == 'Modificar' " 
+                >
+                    Guardar
+                </button>
+
+                <button type="submit" id="btn" gtipo="Guardar" class="text-white btn btn-outline c-red pl-5 pr-5 ml-2 font-12"
+                (click)="modalEquivalence()"
+                >
+                    Cancelar
+                </button>
+            </div>
+
+        </div>
+    </div>
+  </div>
+
+
+
+  <!-- Modal  Vehiculos -->
+
+  <div class="row fixed-top cont-modal" *ngIf="valModalVehicle">
+      <div class="col-12 col-md-12 mt-2 mb-2">  
+          <div class="container c-plomo2 pt-2 pb-2">
+              <h6 class="text-center text-white">IMPORTAR VEHICULOS</h6>
+              <div class="col-12 p-1 mt-4 bg-light tm-equivalenciastabla">
+                <div class="input-group d-flex justify-content-between">
+                    <div class="c-orange1 p-2 flex-g">
+                        <span class="title1"> <strong class="text-white">Vehiculos Existentes</strong></span>      
+                    </div>
+                </div>
+                <table class="table table-hover pad-table text-center">
+                    <thead class="c-orange text-white">
+                      <tr>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Motor</th>
+                        <th scope="col">Año Inicio</th>
+                        <th scope="col">Año Fin</th>
+                        <th scope="col">Combustible</th>
+                        <th scope="col">Diametro</th>
+                        <th scope="col">N° Cilindro</th>
+                        <th scope="col">Cilindrada</th>
+                        <th scope="col">Eliminar</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-light">
+                      <tr  *ngFor="let vehicleProduct of datosVehicleNewProduct">
+                        <th scope="col"> {{vehicleProduct.nameBrandV}} </th>
+                        <th scope="col"> {{vehicleProduct.nameModel}} </th>
+                        <th scope="col"> {{vehicleProduct.nameEngine}} </th>
+                        <th scope="col"> {{vehicleProduct.yearInit}} </th>
+                        <th scope="col"> {{vehicleProduct.yearEnd}} </th>
+                        <th scope="col"> {{vehicleProduct.nameGas}} </th>
+                        <th scope="col"> {{vehicleProduct.diameterVehicle}} </th>
+                        <th scope="col"> {{vehicleProduct.cylinderVehicle}} </th>
+                        <th scope="col"> {{vehicleProduct.displacementVehicle}} </th>
+                        <td (click)="RemoveVehicle(vehicleProduct)"> <i class="material-icons">close</i> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+  
+              <div class="row">
+                  <div class="col-5 pt-4">
+                      <form class="altura-form">
+                        <div class="form-row">
+          
+                          <div class="form-group col-8 text-white">
+                            <label for="RasonSocila" class="m-0">Productos: </label>
+                            <input 
+                            name="filterModalproVehicleModal"
+                            [(ngModel)] = "filterModalproVehicleModal"
+                            type="text" class="form-control h-caja" id="rasonSocial" placeholder="Nombre" (keyup)="searchVehicleProdModal()">
+                          </div>
+          
+                        <!--   
+                          <div class="form-group col-4 text-white">
+                            <label for="RasonSocila" class="m-0">Filtro: </label>
+                            <select 
+                            name="tipySearch"
+                            class="form-control h-caja" id="estado" >
+                              <option value="CC">Codigo Guardado</option>
+                              <option value="CB">Codigo Barras</option>
+                              <option value="CA">Codigo Producto</option>
+                              <option value="CE">Codigo Equivalencia</option>
+                              <option value="CM">Codigo Familia</option>
+                              <option value="CD">Codigo Medida</option>
+                              <option value="CT">Codigo Motor Modelo</option>
+                            </select>
+                          </div>
+                        -->
+  
+                          <div class="col-12 p-1 mt-1 bg-light">
+                              <div class="input-group d-flex justify-content-between">
+                                  <div class="c-orange1 p-2 flex-g">
+                                      <span class="title1"> <strong class="text-white">Productos</strong></span>      
+                                  </div>
+                              </div>
+                              <table class="table table-hover pad-table text-center">
+                                  <thead class="c-orange text-white">
+                                    <tr>
+                                      <th scope="col">Cod Producto</th>
+                                      <th scope="col">Categoria</th>
+                                      <th scope="col">Marca</th>
+                                      <th scope="col">Alternate</th>
+                                      <th scope="col">Cod Barras</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody class="bg-light">
+                                    <tr *ngFor="let product of jsonProduct | filterproducts: newFilterModalproVehicleModal[0]"
+                                    (click)="vehicleProductModal(product)"
+                                    [ngClass]="{'active': selectedItemId === product.idProduct}" (click)="selectedItemId = product.idProduct">
+                                      <td> {{product.newCodeProduct}} </td>
+                                      <td> {{product.nameCategory}} </td>
+                                      <td> {{product.nameBrand}} </td>
+                                      <td> {{product.alternatingProduct}} </td>
+                                      <td> {{product.codBarProduct}} </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                        </div>
+                      </form>
+          
+                    </div>
+          
+                    <div class="col-7 pt-4">
+                        <form class="altura-form">
+                            <div class="form-row">
+              
+                              <div class="form-group col-8 text-white">
+                                <label for="RasonSocila" class="m-0">Vehiculos: </label>
+                                <input 
+                                name="filterModalVehicleModal"
+                                [(ngModel)] = "filterModalVehicleModal"
+                                type="text" class="form-control h-caja" id="rasonSocial" placeholder="Nombre" (keyup)="searchVehicledModal()">
+                              </div>
+                            <!-- 
+                              <div class="form-group col-4 text-white">
+                                <label for="RasonSocila" class="m-0">Filtro: </label>
+                                <select 
+                                name="tipySearch"
+                                class="form-control h-caja" id="estado" >
+                                  <option value="CC">Codigo Marca</option>
+                                  <option value="CB">Codigo Modelo</option>
+                                  <option value="CA">Codigo Motor</option>
+                                  <option value="CA">Codigo Diametro</option>
+                                  <option value="CA">Codigo Cilindros</option>
+                                  <option value="CA">Codigo Año Inicio</option>
+                                  <option value="CA">Codigo Año Fin</option>
+                                </select>
+                              </div>
+
+                            -->
+      
+                              <div class="col-12 p-1 mt-1 bg-light">
+                                  <div class="input-group d-flex justify-content-between">
+                                      <div class="c-orange1 p-2 flex-g">
+                                          <span class="title1"> <strong class="text-white">Vehiculos</strong></span>      
+                                      </div>
+                                      <div class="input-group-append">
+                                          <button type="submit" class="btn btn-outline-primary pt-0 pb-0 pl-2 pr-2 rounded-0 c-plomo text-white"
+                                          (click)="reloadVehicle()"
+                                          >
+                                            <i class="material-icons">autorenew</i>
+                                        </button>
+                                      </div>
+                                  </div>
+                                  <table class="table table-hover pad-table text-center">
+                                    <thead class="c-orange text-white">
+                                      <tr>
+                                        <th scope="col">Marca</th>
+                                        <th scope="col">Modelo</th>
+                                        <th scope="col">Motor</th>
+                                        <th scope="col">Año Inicio</th>
+                                        <th scope="col">Año Fin</th>
+                                        <th scope="col">Combustible</th>
+                                        <th scope="col">Diametro</th>
+                                        <th scope="col">N° Cilindro</th>
+                                        <th scope="col">Cilindrada</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody class="bg-light">
+                                      <tr  *ngFor="let jsvehicleForm of newJsonVehiclesForm | filterVehicle: filterModalVehicleModal" (click)="AddVehicle(jsvehicleForm)">
+                                        <th scope="col"> {{jsvehicleForm.nameBrandV}} </th>
+                                        <th scope="col"> {{jsvehicleForm.nameModel}} </th>
+                                        <th scope="col"> {{jsvehicleForm.nameEngine}} </th>
+                                        <th scope="col"> {{jsvehicleForm.yearInit}} </th>
+                                        <th scope="col"> {{jsvehicleForm.yearEnd}} </th>
+                                        <th scope="col"> {{jsvehicleForm.nameGas}} </th>
+                                        <th scope="col"> {{jsvehicleForm.diameterVehicle}} </th>
+                                        <th scope="col"> {{jsvehicleForm.cylinderVehicle}} </th>
+                                        <th scope="col"> {{jsvehicleForm.displacementVehicle}} </th>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                            </div>
+                          </form>
+                    </div>
+                
+              </div>
+  
+              <div class="text-center p-2">
+                  <button type="submit" id="btn" gtipo="Guardar" class="btn btn-outline btn-success pl-5 pr-5 ml-2 font-12"
+                  *ngIf="datosProduct.btnName == 'Modificar' " 
+                  >
+                      Guardar
+                  </button>
+  
+                  <button type="submit" id="btn" gtipo="Guardar" class="text-white btn btn-outline c-red pl-5 pr-5 ml-2 font-12"
+                  (click)="modalVehicle()"
+                  >
+                      Cancelar
+                  </button>
+              </div>
+  
+          </div>
+      </div>
+    </div>
+
+
+
+
+  <!-- Modal  Galerias -->
+
+  <div class="row fixed-top cont-modal" *ngIf="valModalGallery">
+      <div class="col-12 col-md-12 mt-2 mb-2">  
+          <div class="container c-plomo2 pt-2 pb-2">
+              <h6 class="text-center text-white">IMPORTAR GALERIAS</h6>
+
+              <div class="row">
+                  <div class="col-5 pt-4">
+                      <form class="altura-formg">
+                        <div class="form-row">
+          
+                          <div class="form-group col-8 text-white">
+                            <label for="RasonSocila" class="m-0">Productos: </label>
+                            <input 
+                            name="filterModalproGalleryModal"
+                            [(ngModel)] = "filterModalproGalleryModal"
+                            type="text" class="form-control h-caja" id="rasonSocial" placeholder="Nombre" (keyup)="searchGalleryProdModal()">
+                          </div>
+                        <!--
+                          <div class="form-group col-4 text-white">
+                            <label for="RasonSocila" class="m-0">Filtro: </label>
+                            <select 
+                            name="tipySearch"
+                            class="form-control h-caja" id="estado" >
+                              <option value="CC">Codigo Guardado</option>
+                              <option value="CB">Codigo Barras</option>
+                              <option value="CA">Codigo Producto</option>
+                              <option value="CE">Codigo Equivalencia</option>
+                              <option value="CM">Codigo Familia</option>
+                              <option value="CD">Codigo Medida</option>
+                              <option value="CT">Codigo Motor Modelo</option>
+                            </select>
+                          </div>
+
+                        -->
+  
+                          <div class="col-12 p-1 mt-1 bg-light">
+                              <div class="input-group d-flex justify-content-between">
+                                  <div class="c-orange1 p-2 flex-g">
+                                      <span class="title1"> <strong class="text-white">Productos</strong></span>      
+                                  </div>
+                              </div>
+                              <table class="table table-hover pad-table text-center">
+                                  <thead class="c-orange text-white">
+                                    <tr>
+                                      <th scope="col">Cod Producto</th>
+                                      <th scope="col">Categoria</th>
+                                      <th scope="col">Marca</th>
+                                      <th scope="col">Alternate</th>
+                                      <th scope="col">Cod Barras</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody class="bg-light">
+                                    <tr *ngFor="let product of jsonProduct | filterproducts: newFilterModalproGalleryModal[0]"
+                                    (click)="GalleryProductModal(product)"
+                                    [ngClass]="{'active': selectedItemId === product.idProduct}" (click)="selectedItemId = product.idProduct">
+                                      <td> {{product.newCodeProduct}} </td>
+                                      <td> {{product.nameCategory}} </td>
+                                      <td> {{product.nameBrand}} </td>
+                                      <td> {{product.alternatingProduct}} </td>
+                                      <td> {{product.codBarProduct}} </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                        </div>
+                      </form>
+          
+                    </div>
+          
+                    <div class="col-7 pt-4">
+                        <form class="altura-form">
+                            <div class="form-row">
+
+                              <div class="col-12 p-1 mt-1 bg-light">
+                                  <div class="input-group d-flex justify-content-between">
+                                      <div class="c-orange1 p-2 flex-g">
+                                          <span class="title1"> <strong class="text-white">Galeria Existente</strong></span>      
+                                      </div>
+                                  </div>
+
+                                  <div class="row">
+                                   <div class=col-6>
+                                     <div class="row mt-2">
+                                        <div class="col-sm-6 imgUp">
+                                          <div class="imagePreview" (click)="viewGalleryPincipal(img0)"> <img [src]="img0" class="imgStore" > </div>
+                                            <label class="removeImg">  <td (click)="RemoveImg0()"> <i class="material-icons">close</i> </td> </label>
+                                            <label class="btn btn-primary npad-form">
+                                              Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"  #Image accept="image/*" (change)="handleFileInput0($event.target.files)">
+                                            </label>
+                                        </div>
+
+                                        <div class="col-sm-6 imgUp ">
+                                          <div class="imagePreview" (click)="viewGalleryPincipal(img1)"> <img [src]="img1" class="imgStore" > </div>
+                                          <label class="removeImg">  <td (click)="RemoveImg1()"> <i class="material-icons">close</i> </td> </label>  
+                                          <label class="btn btn-primary npad-form">
+                                              Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"  #Image accept="image/*" (change)="handleFileInput1($event.target.files)">
+                                            </label>
+                                        </div>
+                                      
+
+                                        <div class="col-sm-6 imgUp ">
+                                          <div class="imagePreview" (click)="viewGalleryPincipal(img2)"> <img [src]="img2" class="imgStore" > </div>
+                                          <label class="removeImg">  <td (click)="RemoveImg2()"> <i class="material-icons">close</i> </td> </label> 
+                                          <label class="btn btn-primary npad-form">
+                                              Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"  #Image accept="image/*" (change)="handleFileInput2($event.target.files)">
+                                            </label>
+                                        </div>
+
+                                        <div class="col-sm-6 imgUp">
+                                          <div class="imagePreview" (click)="viewGalleryPincipal(img3)"> <img [src]="img3" class="imgStore" > </div>
+                                          <label class="removeImg">  <td (click)="RemoveImg3()"> <i class="material-icons">close</i> </td> </label>  
+                                          <label class="btn btn-primary npad-form">
+                                              Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" #Image accept="image/*" (change)="handleFileInput3($event.target.files)">
+                                            </label>
+                                        </div>
+                                      </div>
+                                   </div>
+                                   <div class="col-6 mt-2">
+                                      <div class="imagePreviewmax"> <img [src]="imgpreview" class="imgStore"> </div>
+                                   </div>
+                                  </div>
+
+                                  <div class="input-group d-flex justify-content-between">
+                                      <div class="c-orange1 p-2 flex-g">
+                                          <span class="title1"> <strong class="text-white">Galeria Producto Seleccionado</strong></span>      
+                                      </div>
+                                  </div>
+
+                                  <div class="col-12">
+                                    <div class="row">
+
+                                      <div class=col-6>
+                                          <div class="row mt-2">
+                                            <div class="col-sm-6 imgUp text-center" *ngFor="let galleryProduct of newjsonGalleryForm">
+                                              <div class="imagePreview"> <img [src]="galleryProduct.urlGallery" class="imgStore"> </div>
+                                         
+                                                    <button type="submit" id="btn" gtipo="Guardar" class="text-white btn btn-outline c-red font-12"
+                                                    (click)="addGallery(galleryProduct)"
+                                                    >
+                                                        Copiar
+                                                    </button>   
+                                                    <button type="submit" id="btn" gtipo="Guardar" class="text-white btn btn-outline ml-2 c-red font-12"
+                                                    (click)="viewGallery(galleryProduct)"
+                                                    >
+                                                        Ver
+                                                    </button>   
+                
+                                            </div>
+
+                                       
+                                          </div>
+                                      </div>
+                                      <div class="col-6 mt-2">
+                                          <div class="imagePreviewmax"> <img [src]="imgpreviewProduct" class="imgStore"> </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                               
+                                </div>
+                            </div>
+                          </form>
+                    </div>
+                
+              </div>
+  
+              <div class="text-center p-2">
+                  <button type="submit" id="btn" gtipo="Guardar" class="btn btn-outline btn-success pl-5 pr-5 ml-2 font-12"
+                  *ngIf="datosProduct.btnName == 'Modificar' " 
+                  >
+                      Guardar
+                  </button>
+  
+                  <button type="submit" id="btn" gtipo="Guardar" class="text-white btn btn-outline c-red pl-5 pr-5 ml-2 font-12"
+                  (click)="modalGallery()"
+                  >
+                      Cerrar
+                  </button>
+              </div>
+  
+          </div>
+      </div>
+    </div>

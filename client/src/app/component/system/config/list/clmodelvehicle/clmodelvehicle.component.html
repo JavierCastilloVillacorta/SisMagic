@@ -1,0 +1,16 @@
+<div class="container">
+              
+  <div class="col-12 c-orange1 text-center p-2">
+      <span class="title1"> Listado de Modelos</span>
+  </div>
+  
+  <ol id="lista3" class="c-cont">
+    <li *ngFor="let modelVehicle of jsonModelVehicle | filtermodelVehicle: filterModelVehicle " (click)="clicListModelVehicle(modelVehicle)" > 
+      <div>
+        <i class="material-icons p-relative">view_module</i> 
+        <span> {{modelVehicle.nameModel}} </span>  
+        </div>
+    </li>
+  </ol>
+  
+</div>

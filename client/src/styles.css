@@ -1,1 +1,107 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+/* COLORES GLOBALES APP */
+
+.c-orange{
+    background: #ed6521;
+}
+
+.c-orange1{
+  background: #f8af00;
+}
+
+.c-green{
+    background: #128351
+}
+
+.c-blue{
+    background: #007cff;
+  }
+  
+.c-red{
+  background: #7c2525;
+}
+
+.c-red1{
+  background: red ;
+}
+
+.c-plomo{
+  background: #363d49;
+}
+
+.c-plomo1{
+  background: #e5e5e5;
+}
+
+.c-plomo2{
+  background: #4b525d;
+}
+
+
+  /* Textos */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Heebo'), local('Heebo-Regular'), url(https://fonts.gstatic.com/s/heebo/v4/NGS6v5_NC0k9P9H0TbFzsQ.woff2) format('woff2');
+  unicode-range: U+0590-05FF, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+
+body{
+    font-family: 'Heebo', sans-serif !important;
+    font-size: 0.8em;
+}
+
+.l-capital{
+  text-transform: uppercase;
+}
+
+.font-12{
+  font-size: 0.8em;
+}
+
+
+
+/*Focus*/
+
+.form-control:focus {
+  border: 2px solid #3b5998 !important;
+  box-shadow: 0 0 0 0.2rem rgba(59, 89, 152, 0.25) !important;
+}
+
+.btn:focus, .btn.focus {
+  border: 2px solid #3b5998 !important;
+  box-shadow: 0 0 0 0.2rem rgba(59, 89, 152, 0.25) !important;
+}
+
+/*Error cajas*/
+
+.error{
+  border: 2px solid #e74024 !important;
+  box-shadow: 0 0 0 0.2rem rgba(198, 68, 137, 0.3) !important;
+}
+
+/*Estado inactivo*/
+.estateTipe{
+  color: red !important;
+}
+
+/*Tamaño - 100*/
+.tm-100{
+  width: 100%;
+}
+
+/*  Texto Marcado */
+
+.highlightedText{
+  background: yellow !important;
+}
+
+mark {
+  display: inline;
+  margin: 0;
+  padding: 0;       
+  font-weight: 600;
+}
+

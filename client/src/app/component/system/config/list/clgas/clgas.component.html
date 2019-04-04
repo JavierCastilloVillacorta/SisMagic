@@ -1,0 +1,17 @@
+
+<div class="container">
+              
+    <div class="col-12 c-orange1 text-center p-2">
+        <span class="title1"> Listado de Categorias</span>
+    </div>
+    
+    <ol id="lista3" class="c-cont">
+      <li *ngFor="let gas of jsonGas | filtergas: filertGas " (click)="clickListGas(gas)" > 
+        <div>
+          <i class="material-icons p-relative">local_gas_station</i> 
+          <span> {{gas.nameGas}} </span>  
+          </div>
+      </li>
+    </ol>
+    
+  </div>

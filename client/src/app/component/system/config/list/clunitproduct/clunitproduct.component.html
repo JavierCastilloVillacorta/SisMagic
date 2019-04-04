@@ -1,0 +1,17 @@
+
+<div class="container">
+              
+  <div class="col-12 c-orange1 text-center p-2">
+      <span class="title1"> Listado Unidades</span>
+  </div>
+  
+  <ol id="lista3" class="c-cont">
+    <li *ngFor="let unitProduct of jsonUnitProduct | filterunitProduct: filterUnitProductText" (click)="clicListUnitProd(unitProduct)" > 
+      <div>
+        <i class="material-icons p-relative">ac_unit</i> 
+        <span> {{unitProduct.nameUnity}} </span>  
+        </div>
+    </li>
+  </ol>
+  
+</div>

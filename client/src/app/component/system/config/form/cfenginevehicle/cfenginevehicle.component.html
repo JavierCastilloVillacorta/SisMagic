@@ -1,0 +1,38 @@
+<div class="row m-0 pt-5">
+  <h5 class="text-center tm-100">Datos de Motor</h5>
+  <form (ngSubmit)="onSaveEngineV()" #f="ngForm" class="row col-12">
+
+    <div class="col-12 col-sm-12 col-md-12">
+
+        <div class="form-group mb-1">
+          <label for="RasonSocila" class="m-0">Nombre: </label>
+          <input 
+          name="nameEngine"
+          [(ngModel)] = "datosEngineVehicle.nameEngine"
+          [ngClass]="{error: !valNameEngine}" 
+          type="text" class="form-control h-caja" id="rasonSocial" placeholder="Nombre" >
+        </div>
+
+        <div class="form-group mb-1">
+          <label for="RasonSocila" class="m-0"># Valvulas: </label>
+          <input 
+          name="valveEngine"
+          [(ngModel)] = "datosEngineVehicle.valveEngine"
+          [ngClass]="{error: !valValveEngine}" 
+          type="text" class="form-control h-caja" id="rasonSocial" placeholder="N valvulas" >
+        </div>
+
+    </div>
+
+
+
+    <div class="text-center p-2">
+        <button type="submit" id="btn" gtipo="Guardar" class="btn btn-outline btn-success pl-5 pr-5 ml-2 font-12">
+          {{datosEngineVehicle.btnName}}
+        </button>
+    </div>
+
+    
+
+  </form>
+</div>

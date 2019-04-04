@@ -1,0 +1,50 @@
+
+<div class="container">
+  
+  <div class="row">
+      <form class="col-md-12 py-2">
+          <div class="input-group d-flex justify-content-between">
+              <div class="c-orange1 text-center p-2 flex-g">
+                  <span class="title1"> Listado de Productos</span>      
+              </div>
+              <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-primary pt-0 pb-0 pl-2 pr-2 ml-2 ml-2 rounded-0 c-plomo text-white" (click)="newProd()">
+                    <i class="material-icons">plus_one</i>
+                </button>
+              </div>
+          </div>
+      </form>
+  </div>
+
+  <ul id="lista3" class="c-cont mt-1">
+    
+    <li class="row" *ngFor="let product of jsonProduct | filterproducts: filterProductText"> 
+      <div class="row lista" (click)="clickListProduct(product)">
+          <div class="col-6 p-0 text-right"><strong> Cod. Producto: </strong></div>
+          <div class="col-6 p-0" innerHTML="{{ product.newCodeProduct | filtercolour: newfilterProductText }}"></div>
+          <div class="col-6 p-0 text-right"><strong>Categoria: </strong></div>
+          <div class="col-6 p-0" innerHTML="{{ product.nameCategory | filtercolour: newfilterProductText }}"></div>
+          <div class="col-6 p-0 text-right"><strong>Marc. Producto: </strong></div>
+          <div class="col-6 p-0" innerHTML="{{ product.nameBrand | filtercolour: newfilterProductText }}"></div>
+          <div class="col-6 p-0 text-right"><strong>Alternante: </strong></div>
+          <div class="col-6 p-0" innerHTML="{{ product.alternatingProduct | filtercolour: newfilterProductText }}"></div>
+          <div class="col-6 p-0 text-right"><strong>Cod Barras: </strong></div>
+          <div class="col-6 p-0" innerHTML="{{ product.codBarProduct | filtercolour: newfilterProductText }}"></div>
+
+      </div>
+      <div class="col-9 p-1 text-center c-green text-white" [ngClass]="{cred1: product.stateProduct == 2}"><strong>{{product.stateProduct == 1 ? 'Activo' : 'Inactivo'}}</strong></div>
+
+      <div class="col-1 p-1 text-center border-a btn-copy c-orange1 text-white" (click)="clickCopyProduct1(product)"><strong>1</strong></div>
+      <div class="col-1 p-1 text-center border-a btn-copy c-orange1 text-white" (click)="clickCopyProduct2(product)"><strong>2</strong></div>
+      <div class="col-1 p-1 text-center border-a btn-copy c-orange1 text-white" (click)="clickCopyProduct3(product)"><strong>3</strong></div>
+    <!-- 
+      <div class="col-3 p-1 text-center border-a c-plomo btn-copy text-white" (click)="clickCopyProEquivalence(product)"><strong>Equiv</strong></div>
+      <div class="col-3 p-1 text-center border-a c-plomo btn-copy text-white" (click)="clickCopyProVehicle(product)"><strong>Veich </strong></div>
+      <div class="col-3 p-1 text-center border-a c-plomo btn-copy text-white" (click)="clickCopyProGallery(product)"><strong>Gal</strong></div>
+
+    -->
+    </li>
+
+  </ul>
+
+</div>

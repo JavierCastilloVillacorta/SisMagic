@@ -1,0 +1,19 @@
+
+<div class="container">
+              
+    <div class="col-12 c-orange1 text-center p-2">
+        <span class="title1"> Listado de Marcas</span>
+    </div>
+  
+    <ol id="lista3" class="c-cont">
+
+      <li *ngFor="let brandsProduct of jsonBrandsProduct | filterbrandProduct: filterBrandText " (click)="clickListBrProduct(brandsProduct)"> 
+        <div>
+         <i class="material-icons p-relative">directions_car</i> 
+         <span> {{brandsProduct.nameBrand}} </span>  
+        </div>
+      </li>
+
+  </ol>
+  
+  </div>

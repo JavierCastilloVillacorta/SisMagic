@@ -1,0 +1,61 @@
+<div class="row m-0 pt-5">
+  <h5 class="text-center tm-100">Datos de Categorias</h5>
+  <form (ngSubmit)="onSaveUnitProduct()" #f="ngForm" class="row col-12">
+
+    <div class="col-12 col-sm-12 col-md-6">
+
+        <div class="form-group mb-1">
+          <label for="RasonSocila" class="m-0">Nombre: </label>
+          <input 
+          name="nameUnity"
+          [(ngModel)] = "datosUnitProduct.nameUnity"
+          [ngClass]="{error: !valNameUnity }" 
+          type="text" class="form-control h-caja" id="rasonSocial" placeholder="Nombre Unidad" >
+        </div>
+
+        <div class="form-group mb-1">
+          <label for="Direccion" class="m-0">Descripcion: </label>
+          <textarea 
+          name="descriptionUnity"
+          [(ngModel)] = "datosUnitProduct.descriptionUnity"
+          class="form-control rounded-0 font-12" id="exampleFormControlTextarea2" rows="3"></textarea>
+        </div>
+
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-6">
+             
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Codigo: </label>
+        <input 
+        name="codeUnity"
+        [(ngModel)] = "datosUnitProduct.codeUnity"
+        [ngClass]= "{error: !valCodeUnity}"
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Codigo Unidad" >
+      </div>
+
+
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Cantidad: </label>
+        <input 
+        name="quantityUnity"
+        [(ngModel)] = "datosUnitProduct.quantityUnity"
+        [ngClass]= "{error: !valQuantityUnity}"
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Cantidad Unidad" >
+      </div>
+  
+ 
+      
+    </div>
+
+
+    <div class="text-center p-2">
+        <button type="submit" id="btn" gtipo="Guardar" class="btn btn-outline btn-success pl-5 pr-5 ml-2 font-12">
+          {{datosUnitProduct.btnName}}
+        </button>
+    </div>
+
+    
+
+  </form>
+</div>

@@ -1,0 +1,70 @@
+<div class="row m-0 pt-5">
+  <h5 class="text-center tm-100">Datos de Categorias</h5>
+  <form (ngSubmit)="onSaveBrandVehicle()" #f="ngForm" class="row col-12">
+
+    <div class="col-12 col-sm-12 col-md-6">
+
+        <div class="form-group mb-1">
+          <label for="RasonSocila" class="m-0">Nombre: </label>
+          <input 
+          name="nameBrandV"
+          [(ngModel)] = "datosBrandVehicle.nameBrandV"
+          [ngClass]="{error: !valNameBrandV}" 
+          type="text" class="form-control h-caja" id="rasonSocial" placeholder="Nombre" >
+        </div>
+
+        <div class="form-group mb-1">
+          <label for="Direccion" class="m-0">Descripcion: </label>
+          <textarea 
+          name="descriptionBrandV"
+          [(ngModel)] = "datosBrandVehicle.descriptionBrandV"
+          class="form-control rounded-0 font-12" id="exampleFormControlTextarea2" rows="3"></textarea>
+        </div>
+
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-6">
+             
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Letra: </label>
+        <input 
+        name="letterBrandV"
+        [(ngModel)] = "datosBrandVehicle.letterBrandV"
+        [ngClass]= "{error: !valLetterBrandV}"
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Codigo" >
+      </div>
+
+      <div class="form-group mb-1">
+        <label for="RasonSocila" class="m-0">Codigo: </label>
+        <input 
+        name="codeBrandV"
+        [(ngModel)] = "datosBrandVehicle.codeBrandV"
+        [ngClass]= "{error: !valcodeBrandV}"
+        type="text" class="form-control h-caja" id="rasonSocial" placeholder="Codigo" >
+      </div>
+
+      <div class="form-group mb-1">
+        <label class="btn btn-primary npad-form h-caja">
+         Imagen <input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+        </label>
+        <div class="pre-img"> 
+          <img [src]="datosBrandVehicle.imgBrandV" class="imgStore">  
+        </div>
+      </div>
+  
+  
+      
+      
+    </div>
+
+
+    <div class="text-center p-2">
+        <button type="submit" id="btn" gtipo="Guardar" class="btn btn-outline btn-success pl-5 pr-5 ml-2 font-12">
+          {{datosBrandVehicle.btnName}}
+        </button>
+    </div>
+
+    
+
+  </form>
+</div>

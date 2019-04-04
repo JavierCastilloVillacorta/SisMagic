@@ -1,0 +1,162 @@
+
+<div class="container-fluid d-flex justify-content-end pt-5">
+  <div id="cont-generalsist" class="cont-general cont-general1">
+    <hr>
+      <!-- page-content -->   
+        <div class="row">
+          <div class=" col-12 col-sm-4 col-md-4">
+  
+            <!-- Buscador Equivalencias -->
+            <app-cbvehicle
+            *ngIf="menuVe"
+            (searchVehicleText) = "searchVehicleText($event)"
+            (newFormVehicle) = "newFormVehicle($event)"
+            ></app-cbvehicle>
+            <!-- Listado Equivalencias -->
+            <app-clvehicle
+            *ngIf="menuVe"
+            [jsonVehicle] = "jsonVehicle"  
+            (clickOupListVehicle) = "clickOupListVehicle($event)"
+            [filterVehicle] = "filterVehicle"
+            ></app-clvehicle>
+            <!-- Buscador Combustible-->
+            <app-cbgas
+            *ngIf="menuGa"  
+            (searchGasText) = "searchGasText($event)"
+            (newFormGas) = "newFormGas($event)"
+            >
+            </app-cbgas>
+            <!-- Lista Combustible-->
+            <app-clgas
+            *ngIf="menuGa"   
+            [jsonGas] = "jsonGas"
+            (clickOupListGas) = "clickOupListGas($event)"
+            [filertGas]=filertGas
+            ></app-clgas>
+            <!-- Buscador Marca Vehiculo -->
+            <app-cbbrandvehicle
+            *ngIf="menuBr"
+            (searchBrandVehicleText) = "searchBrandVehicleText($event)"
+            (newFormBrandVehicle) = "newFormBrandVehicle($event)"
+            ></app-cbbrandvehicle>
+            <!-- lista Marca Vehiculo -->
+            <app-clbrandvehicle
+            *ngIf="menuBr"
+            [jsonBrandVehicle] = "jsonBrandVehicle"
+            (clickOupListBrandVehicle) = "clickOupListBrandVehicle($event)"
+            [filterBrandvehicle] = "filterBrandvehicle"
+            ></app-clbrandvehicle>
+            <!-- Buscador Model vehiculo -->
+            <app-cbmodelvehicle
+            *ngIf="menuMo"
+            (searchModelVehicleText) = "searchModelVehicleText($event)"
+            (newFormModelVehicle) = "newFormModelVehicle($event)"
+            ></app-cbmodelvehicle>
+            <!-- Lista Model Vehiculo -->
+            <app-clmodelvehicle
+            *ngIf="menuMo"
+            [jsonModelVehicle] = "jsonModelVehicle"
+            (clickOupListModelVehicle) = "clickOupListModelVehicle($event)"
+            [filterModelVehicle] = "filterModelVehicle"
+            ></app-clmodelvehicle>
+            <!-- buscador Motor Vehiculo -->
+            <app-cbenginevehicle
+            *ngIf="menuEn"
+            (searchEngineVehicletext) = "searchEngineVehicletext($event)"
+            (newFormEngineVehicle) = "newFormEngineVehicle($event)"
+            ></app-cbenginevehicle>
+            <!-- lista Motor Vehiculo -->
+            <app-clenginevehicle
+            *ngIf="menuEn"
+            [jsonEngineVehicle] = "jsonEngineVehicle"
+            (clickOupListEngineVehicle) ="clickOupListEngineVehicle($event)"
+            [filterEngineVehicle] = "filterEngineVehicle"
+            ></app-clenginevehicle>
+
+          </div>
+
+          <div class=" col-12 col-sm-8 col-md-8">
+            <div class="row c-plomo1 mr-2">
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active font-l" id="nav-home-tab" data-toggle="tab" href="#vehicle" role="tab"
+                    (click)="menuVehicle()"
+                    >
+                      Vehiculo
+                    </a>
+                    <a class="nav-item nav-link font-l" id="nav-profile-tab" data-toggle="tab" href="#gas" role="tab"
+                    (click)="menuGas()"
+                    >
+                      Combustible
+                    </a>
+                    <a class="nav-item nav-link font-l" id="nav-profile-tab" data-toggle="tab" href="#brand" role="tab"
+                    (click)="menuBrand()"
+                    >
+                      Marca
+                    </a>
+                    <a class="nav-item nav-link font-l" id="nav-profile-tab" data-toggle="tab" href="#model" role="tab"
+                    (click)="menuModel()"
+                    >
+                      Modelo
+                    </a>
+                    <a class="nav-item nav-link font-l" id="nav-profile-tab" data-toggle="tab" href="#engine" role="tab"
+                    (click)="menuEngine()"
+                    >
+                      Motor
+                    </a>
+                   
+                 
+                  </div>
+                </nav>
+                <div class="row col-12 tab-content m-0" id="nav-tabContent">
+                  <div class="tab-pane fade show active row col-12 m-0" id="vehicle" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <!-- Formulario Vehiculos-->            
+                    <app-cfvehicle
+                    [datosVehicle] = "datosVehicle"
+                    [jsonGas] = "jsonGas"
+                    [jsonBrandVehicle] = "jsonBrandVehicle"
+                    [jsonModelVehicle] = "jsonModelVehicle"
+                    [jsonEngineVehicle] = "jsonEngineVehicle"
+                    (saveVehicle) = "saveVehicle($event)"
+                    ></app-cfvehicle>
+     
+                  </div>
+                  <div class="tab-pane fade" id="gas" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <!-- Formulario Combustible -->
+                    <app-cfgas
+                    [datosGas] = "datosGas"
+                    (SaveGass) = "SaveGass($event)"
+                    ></app-cfgas>
+                  </div>
+
+                  <div class="tab-pane fade" id="brand" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <!-- Formulario Marca Vehiculo -->
+                    <app-cfbrandvehicle
+                    [datosBrandVehicle] = "datosBrandVehicle"
+                    (saveBrandVehicle) = "saveBrandVehicle($event)"
+                    ></app-cfbrandvehicle>
+                  </div>
+
+                  <div class="tab-pane fade" id="model" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <!-- Formulario Modelo Vehiculo -->
+                    <app-cfmodelvehicle
+                    [datosModelVehicle] = "datosModelVehicle"
+                    (saveModuleVehicle) = "saveModuleVehicle($event)"
+                    ></app-cfmodelvehicle>
+                  </div>
+
+                  <div class="tab-pane fade" id="engine" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <!-- Formulario Equivalencias -->
+                    <app-cfenginevehicle
+                    [datosEngineVehicle] = "datosEngineVehicle"
+                    (saveEngineVehicle) = "saveEngineVehicle($event)"
+                    ></app-cfenginevehicle>
+                  </div>
+
+                </div>
+            </div>
+          </div>
+        </div>
+    <hr>
+  </div>
+</div> 

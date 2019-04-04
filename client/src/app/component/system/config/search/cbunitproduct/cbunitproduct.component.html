@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+      <form class="col-md-12 py-2">
+          <div class="input-group">
+              <input type="text" class="form-control typeahead c-orange1" name="filterLisUnitProduct" placeholder="Buscar Categoria ..." [(ngModel)] = "filterLisUnitProduct"  (keyup)="search()">
+              <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-primary pt-0 pb-0  pl-2 pr-2 ml-2 ml-2 c-plomo text-white">
+                    <i class="material-icons">search</i>
+                  </button>
+                  <button (click)="newUnitProd()" type="submit" class="btn btn-outline-primary pt-0 pb-0 pl-2 pr-2 ml-2 rounded-0 c-plomo text-white">
+                    <i class="material-icons">plus_one</i>
+                </button>
+              </div>
+          </div>
+      </form>
+  </div>
+</div>
+

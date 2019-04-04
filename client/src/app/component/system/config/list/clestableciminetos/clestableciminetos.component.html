@@ -1,0 +1,26 @@
+
+<div class="container">
+              
+  <div class="col-12 c-orange1 text-center p-2">
+      <span class="title1"> Listado de Establecimiento</span>
+  </div>
+
+  <ol id="lista3" class="c-cont">
+    <li *ngFor="let primary of storeTotal"> 
+      <div (click)="clickPrimary(primary.primary)">
+       <i class="material-icons p-relative" [ngClass]="{estateTipe: primary.primary.stateStore == 2}" >domain</i> 
+       <span> {{primary.primary.nameStore}} </span>  
+       <label class="ml-4">Matriz</label>
+       </div>
+       <ol class="itm2">
+         <li *ngFor="let secundary of primary.secundary | filter: filterName" (click)="clickSecundary(secundary)"> 
+             <i class="material-icons pos-icon" [ngClass]="{estateTipe: secundary.stateStore == 2}" >home</i> 
+             <span> {{secundary.nameStore}} </span> 
+             <label class="ml-4">Tienda </label> 
+         </li>
+       </ol>
+    </li>
+</ol>
+
+</div>
+

@@ -1,0 +1,89 @@
+<div class="row m-0 pt-5">
+  <h5 class="text-center">Datos de Almacenes</h5>
+  <form (ngSubmit)="onSaveWareHouse()" #f="ngForm" class="row col-12">
+
+    <div class="col-12 col-sm-12 col-md-6">
+
+
+        <div class="form-group mb-1">
+            <label for="RasonSocila" class="m-0">Nombre Almacen: {{datosWarehouse.nameStore}} </label>
+            <input 
+            name="nameStore"
+            [(ngModel)]="datosWarehouse.nameStore"
+            [ngClass]="{error: !valName}" 
+            type="text" class="form-control h-caja" id="rasonSocial" placeholder="Nombre de Almacen" >
+          </div>
+
+          <div class="form-group mb-1">
+            <label for="Direccion" class="m-0">Direccion: </label>
+            <input 
+            name="addressStore"
+            [(ngModel)]="datosWarehouse.addressStore"
+            [ngClass]="{error: !valAddress}" 
+            type="text" class="form-control h-caja" id="direccion" placeholder="Direccion de Empresa" >
+          </div>    
+
+        <div class="form-group mb-1">
+          <label for="Telefono" class="m-0">Tetefono: </label>
+          <input 
+          name="phoneStore"
+          [(ngModel)]="datosWarehouse.phoneStore"
+          [ngClass]="{error: !valPhone}" 
+          type="text" class="form-control h-caja" id="telefono" placeholder="Telefono de Empresa" >
+        </div>
+        
+    
+    
+        
+
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-6">
+      
+
+          <div class="form-group mb-1">
+            <label for="Celular" class="m-0">Celular: </label>
+            <input 
+            name="mobileStore"
+            [(ngModel)]="datosWarehouse.mobileStore"
+            [ngClass]="{error: !valMobile}" 
+            type="text" class="form-control h-caja" id="celular" placeholder="Celular de Empresa" >
+          </div>                          
+      
+          <div class="form-group mb-1">
+            <label for="Estado" class="m-0">Estado: </label>
+            <select 
+            name="stateStore"
+            [(ngModel)]="datosWarehouse.stateStore"
+            class="form-control h-caja" id="estado">
+              <option value="1">Activo</option>
+              <option value="2" >Inactivo</option>
+            </select>
+          </div>
+
+          <div class="form-group mb-1" [ngClass]="{ocultar: datosWarehouse.idType == 1}">
+              <label for="Tipo" class="m-0 ">Empresa Matriz: </label>
+              <select 
+              name="idMatrix"
+              [(ngModel)]="datosWarehouse.idMatrix"
+              [ngClass]="{error: !valMatrix}" 
+              class="form-control h-caja" id="tipo">
+                <option value="0" >Escoja Matriz</option>
+                <option *ngFor="let establecer of establecerMatrixf" value="{{establecer.idStore}}" > {{establecer.nameStore}}</option>
+              </select>
+          </div>
+      
+
+    </div>
+
+    
+    <div class="text-center p-2">
+        <button type="submit" id="btn" gtipo="Guardar" class="btn btn-outline btn-success pl-5 pr-5 ml-2 font-12">
+            {{datosWarehouse.btnName}}
+        </button>
+    </div>
+
+    
+
+  </form>
+</div>

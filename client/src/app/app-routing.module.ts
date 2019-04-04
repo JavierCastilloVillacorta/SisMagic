@@ -12,7 +12,10 @@ import { CloginComponent } from './component/web/clogin/clogin.component';
 
 // Componentes - Sistema
 import { CmenuComponent } from './component/system/cmenu/cmenu.component';
-import { CestablecimientosComponent } from './component/system/cestablecimientos/cestablecimientos.component';
+import { CestablecimientosComponent } from './component/system/config/cestablecimientos/cestablecimientos.component';
+import { CproductsComponent } from './component/system/config/cproducts/cproducts.component';
+import { CvehicleComponent } from './component/system/config/cvehicle/cvehicle.component';
+
 
 const routes: Routes = [
   // Rutas web
@@ -28,7 +31,10 @@ const routes: Routes = [
   { path: 'login', component: CloginComponent },
 
   // Rutas Sistema
-  { path: 'dashboard', component: CestablecimientosComponent },
+  { path: 'dashboard', component: CproductsComponent},
+  { path: 'establishment', component: CestablecimientosComponent},
+  { path: 'products', component: CproductsComponent},
+  { path: 'Vehicles', component: CvehicleComponent},
 
 
 ];

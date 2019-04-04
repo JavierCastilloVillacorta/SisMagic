@@ -1,0 +1,20 @@
+
+<div class="container">
+              
+    <div class="col-12 c-orange1 text-center p-2">
+        <span class="title1"> Listado de Equivalencias</span>
+    </div>
+  
+    <ol id="lista3" class="c-cont">
+
+      <li *ngFor="let equivalences of jsonEquivalences | filterEquivalence: filterEquivalencestext " (click)="clicListEquivalence(equivalences)" > 
+        <div>
+         <i class="material-icons p-relative" [ngClass]="{estateTipe: equivalences.stateEquivalence == 2}">view_column</i> 
+         <span> {{equivalences.codFrabricEquivalence}} </span>  
+         </div>
+      </li>
+  
+  </ol>
+  
+  </div>
+  

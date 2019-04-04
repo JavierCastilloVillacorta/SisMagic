@@ -1,0 +1,25 @@
+
+<div class="container">
+              
+    <div class="col-12 c-orange1 text-center p-2">
+        <span class="title1"> Listado de Almacenes</span>
+    </div>
+  
+    <ol id="lista3" class="c-cont">
+      <li *ngFor="let primary of warehouseTotal"> 
+         <i class="material-icons p-relative" [ngClass]="{estateTipe: primary.primary.stateStore == 2}" >domain</i> 
+         <span> {{primary.primary.nameStore}} </span>  
+         <label class="ml-4">Matriz</label>
+         <ol class="itm2">
+           <li *ngFor="let warehouse of primary.warehouse | filterwarehouse:filterWareH" (click)="clickSecundaryWare(warehouse)"> 
+              <i class="material-icons pos-icon" [ngClass]="{estateTipe: warehouse.stateStore == 2}" >home</i> 
+              <span> {{warehouse.nameStore}} </span> 
+              <label class="ml-4">Tienda </label> 
+           </li>
+         </ol>
+      </li>
+  </ol>
+  
+  </div>
+  
+  

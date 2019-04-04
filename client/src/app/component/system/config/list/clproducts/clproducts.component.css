@@ -1,0 +1,53 @@
+/* CSS Listado*/
+
+#lista3 {
+    counter-reset: li; 
+    list-style: none; 
+    *list-style: decimal; 
+    padding: 0;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    border-right: 4px solid #e5e5e5;
+    border-top: 4px solid #e5e5e5;
+    border-left:  4px solid #e5e5e5;
+}
+
+#lista3 li{
+    position: relative;
+    margin: .0em 0 .0em .0em;
+    color: #444;
+    background: #b8b6b6;
+    text-decoration: none; 
+    border-bottom: 4px solid #e5e5e5;
+}
+
+.lista:hover{
+    background: #9999e9;
+    cursor: pointer;
+    width: 100%;
+    margin-left: 1px;
+}
+
+.title1{
+    font-size: 16px;
+}
+
+.flex-g{
+    flex-grow: 1;
+}
+
+.cred1{
+    background: red !important;
+  }
+
+.border-a{
+    border: 0.5px solid #a09f9a;
+}
+
+.btn-copy{
+    cursor: pointer;
+}
+
+.btn-copy:hover{
+    background: #444;
+}
+

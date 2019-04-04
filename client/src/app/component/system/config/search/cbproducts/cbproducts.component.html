@@ -1,0 +1,49 @@
+<div class="row border-b mt-2 rounded p-2">
+
+  <h6 class="text-center col-12">BUSQUEDA DE ARTICULOS</h6>
+
+  <div class="col-12 col-md-8">
+    
+    <form >
+      <div class="form-row">
+      <!--
+        <div class="form-group col-12 col-md-12">
+          <label>Tipo Busqueda:</label><br>
+          <span class="textfont-Busqueda">Por Cod. Guardado (Shift + C) - Por Cod. Barras (Shift + B)</span><br>
+          <span class="textfont-Busqueda">Por Cod. Producto (Shift + A) - Por Equivalencias (Shift + E)</span><br>
+          <span class="textfont-Busqueda">Por Familia (Shift + M) - Por Medida (Shift + D) - Por Motor Modelos (Shift + T)</span><br>
+        </div>
+
+        <div class="form-group col-6 col-md-6">
+          <select 
+          name="tipySearch"
+          [(ngModel)] = "tipySearch"
+          (change)="newSearchCodyg($event)"
+          class="form-control h-caja" id="estado" >
+            <option value="CC">Codigo Guardado</option>
+            <option value="CB">Codigo Barras</option>
+            <option value="CA">Codigo Producto</option>
+            <option value="CE">Codigo Equivalencia</option>
+            <option value="CM">Codigo Familia</option>
+            <option value="CD">Codigo Medida</option>
+            <option value="CT">Codigo Motor Modelo</option>
+          </select>
+        </div>
+
+        -->
+
+        <div class="form-group col-6 col-md-6">
+          <input type="text" class="form-control h-caja" #searchid id="searchid" placeholder="{{placesearch}}" name="filterLisProduct" [(ngModel)] = "filterLisProductText" (keyup)="search()">
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+  <div class="col-12 col-md-4 row justify-content-center align-items-center minh-100">
+    <label>Codigo de Barras:</label>
+  </div>
+
+
+</div>
+
