@@ -7,6 +7,6 @@ export interface Store{
     stateStore: number;
     imageStore: string;
     phoneStore: string;
-    idMatrix: number;
+    idMatrix?: number;
     idType: number
 }

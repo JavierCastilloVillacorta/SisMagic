@@ -2,10 +2,11 @@ import express, { Application } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
-
-
 import indexRoutes from './routes/indexRoutes';
-import confRoutes from './routes/configuration/userRoutes';
+import userConfRoutes from './routes/configuration/userRoutes';
+import establishmentconfRoutes from './routes/configuration/establishmentRouter';
+import establishmentconfSucuRoutes from './routes/configuration/establishmentSucuRouter';
+
 
 class Server {
 
@@ -27,7 +28,9 @@ class Server {
 
     routes(): void {
         this.app.use('/',indexRoutes);
-        this.app.use('/confi/usuario', confRoutes);
+        this.app.use('/confi/usuario', userConfRoutes);
+        this.app.use('/confi/estable', establishmentconfRoutes);
+        this.app.use('/confi/sucur', establishmentconfSucuRoutes);
     }
 
     start(): void {

@@ -41,3 +41,8 @@
     position: relative;
     top: 7px;
 }
+
+.max-h{
+    max-height: 500px;
+    overflow: auto;
+}

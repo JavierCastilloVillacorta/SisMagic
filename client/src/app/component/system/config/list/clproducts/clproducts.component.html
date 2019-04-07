@@ -18,17 +18,17 @@
 
   <ul id="lista3" class="c-cont mt-1">
     
-    <li class="row" *ngFor="let product of jsonProduct | filterproducts: filterProductText"> 
-      <div class="row lista" (click)="clickListProduct(product)">
-          <div class="col-6 p-0 text-right"><strong> Cod. Producto: </strong></div>
+    <li class="row npt-5" *ngFor="let product of jsonProduct | filterproducts: filterProductText"> 
+      <div class="row lista m-0 " (click)="clickListProduct(product)">
+          <div class="col-6 p-0 text-left np-10 "><strong> Cod. Producto: </strong></div>
           <div class="col-6 p-0" innerHTML="{{ product.newCodeProduct | filtercolour: newfilterProductText }}"></div>
-          <div class="col-6 p-0 text-right"><strong>Categoria: </strong></div>
+          <div class="col-6 p-0 text-left np-10"><strong>Categoria: </strong></div>
           <div class="col-6 p-0" innerHTML="{{ product.nameCategory | filtercolour: newfilterProductText }}"></div>
-          <div class="col-6 p-0 text-right"><strong>Marc. Producto: </strong></div>
+          <div class="col-6 p-0 text-left np-10"><strong>Marc. Producto: </strong></div>
           <div class="col-6 p-0" innerHTML="{{ product.nameBrand | filtercolour: newfilterProductText }}"></div>
-          <div class="col-6 p-0 text-right"><strong>Alternante: </strong></div>
+          <div class="col-6 p-0 text-left np-10"><strong>Alternante: </strong></div>
           <div class="col-6 p-0" innerHTML="{{ product.alternatingProduct | filtercolour: newfilterProductText }}"></div>
-          <div class="col-6 p-0 text-right"><strong>Cod Barras: </strong></div>
+          <div class="col-6 p-0 text-left np-10"><strong>Cod Barras: </strong></div>
           <div class="col-6 p-0" innerHTML="{{ product.codBarProduct | filtercolour: newfilterProductText }}"></div>
 
       </div>

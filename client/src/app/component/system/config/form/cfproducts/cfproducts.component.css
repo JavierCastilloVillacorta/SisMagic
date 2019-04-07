@@ -126,6 +126,7 @@
 .tm-equivalenciastabla{
   height: 250px;
   overflow-y: auto;
+  border: 1px solid #dcdee0;
 }
 
 .altura-formg{
@@ -147,4 +148,9 @@
   color: #fff;
   height: 25px;
   right: 15px;
+}
+
+.pos-icon{
+  position: relative;
+  top: 4px;
 }

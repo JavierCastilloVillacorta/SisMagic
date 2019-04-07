@@ -15,6 +15,7 @@
               (click)="toAutoCompBrandVehicle()"  
               (keydown)="onKeydown($event)"
               [ngClass]="{error: !valNameBrandV}" 
+              (keyup)="brandVehicleKeyUp()"
               type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Marca" autocomplete="off">
                 
               <div 
@@ -39,7 +40,8 @@
               [(ngModel)] = "datosProduct.nameCategory"
               (click)="toAutoCompCatProduct()"  
               (keydown)="onKeydown($event)"
-              [ngClass]="{error: !valNameCategory}" 
+              [ngClass]="{error: !valNameCategory}"
+              (keyup)="CategoryKeyUp()"
               type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Categorias" autocomplete="off">
                 
               <div 
@@ -91,7 +93,8 @@
               [(ngModel)] = "datosProduct.nameSuper"
               (click)="toAutoCompSuperProduct()"  
               (keydown)="onKeydown($event)"
-              [ngClass]="{error: !valNameSuper}" 
+              [ngClass]="{error: !valNameSuper}"
+              (keyup)="SuperKeyUp()"
               type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Categorias" autocomplete="off">
                 
               <div 
@@ -116,14 +119,15 @@
               [(ngModel)] = "datosProduct.nameBrand"
               (click)="toAutoCompBrandProduct()"  
               (keydown)="onKeydown($event)"
-              [ngClass]="{error: !valNameBrand}" 
+              [ngClass]="{error: !valNameBrand}"
+              (keyup)="BrandProductKeyUp()"
               type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Marca Producto" autocomplete="off">
                 
               <div 
                 class="c-autocomplete"
                 *ngIf="menuBrandProduct">
                 <li 
-                *ngFor="let brandProduct of jsonBrandsProduct | filterbrandProduct: datosProduct.nameSuper " (click)="rescatadatoBrandProduct(brandProduct)"
+                *ngFor="let brandProduct of jsonBrandsProduct | filterbrandProduct: datosProduct.nameBrand " (click)="rescatadatoBrandProduct(brandProduct)"
                 class = "item-autocomplete"
                 >
                   <i class="material-icons p-relative">view_module</i> 
@@ -183,7 +187,8 @@
               [(ngModel)] = "datosProduct.nameUnity"
               (click)="toAutoCompUnitProduct()"  
               (keydown)="onKeydown($event)"
-              [ngClass]="{error: !valNameUnity}" 
+              [ngClass]="{error: !valNameUnity}"
+              (keyup)="UnitKeyUp()"
               type="text" class="form-control h-caja text-info" id="rasonSocial" placeholder="Unidad Producto" autocomplete="off">
                 
               <div 
@@ -272,7 +277,7 @@
       <div class="col-12 p-1 mt-4 bg-light">
          
         <div class="input-group d-flex justify-content-between">
-            <div class="c-orange1 text-center p-2 flex-g">
+            <div class="c-blue1 text-center p-2 flex-g">
                 <span class="title1"> <strong class="text-white">Equivalencia</strong></span>      
             </div>
             <div class="input-group-append">
@@ -286,7 +291,7 @@
           
 
         <table class="table table-hover pad-table text-center">
-          <thead class="c-orange text-white">
+          <thead class="c-plomo3">
             <tr>
               <th scope="col">Codigo</th>
               <th scope="col">Descripcion</th>
@@ -308,7 +313,7 @@
       <div class="col-12 p-1 mt-4 bg-light">
          
         <div class="input-group d-flex justify-content-between">
-            <div class="c-orange1 text-center p-2 flex-g">
+            <div class="c-blue1 text-center p-2 flex-g">
                 <span class="title1"> <strong class="text-white">Automoviles</strong></span>      
             </div>
             <div class="input-group-append">
@@ -323,7 +328,7 @@
 
 
         <table class="table table-hover pad-table text-center">
-          <thead class="c-orange text-white">
+          <thead class="c-plomo3 l-gris">
             <tr>
               <th scope="col">Marca</th>
               <th scope="col">Modelo</th>
@@ -357,7 +362,7 @@
       <div class="col-12 p-1 mt-4 bg-light">
          
         <div class="input-group d-flex justify-content-between">
-            <div class="c-orange1 text-center p-2 flex-g">
+            <div class="c-blue1 text-center p-2 flex-g">
                 <span class="title1"> <strong class="text-white">Galeria</strong></span>      
             </div>
             <div class="input-group-append">
@@ -386,22 +391,23 @@
     </div>
     
   </div>
-
+  
 
   <!-- Modal Equivalencias -->
 
+ 
   <div class="row fixed-top cont-modal" *ngIf="valModalEquivalence">
     <div class="col-12 col-md-12 mt-2 mb-2">  
-        <div class="container c-plomo2 pt-2 pb-2 overflow-form">
-            <h6 class="text-center text-white">IMPORTAR EQUIVALENCIAS</h6>
-            <div class="col-12 p-1 mt-4 bg-light tm-equivalenciastabla">
+        <div class="container c-blank1 pt-2 pb-2 overflow-form">
+            <h6 class="text-center l-gris">IMPORTAR EQUIVALENCIAS</h6>
+            <div class="col-12 pl-0 pr-0 mt-4 bg-light tm-equivalenciastabla">
               <div class="input-group d-flex justify-content-between">
-                  <div class="c-orange1 p-2 flex-g">
+                  <div class="c-blue1 p-2 flex-g">
                       <span class="title1"> <strong class="text-white">Equivalencia Existentes</strong></span>      
                   </div>
               </div>
               <table class="table table-hover pad-table text-center">
-                <thead class="c-orange text-white">
+                <thead class="c-plomo3 l-gris">
                   <tr>
                     <th scope="col">Codigo</th>
                     <th scope="col">Descripcion</th>
@@ -425,7 +431,7 @@
                     <form class="altura-form">
                       <div class="form-row">
         
-                        <div class="form-group col-8 text-white">
+                        <div class="form-group col-8 l-gris">
                           <label for="RasonSocila" class="m-0">Productos: </label>
                           <input 
                           name="filterModalproEquivalenceModal"
@@ -448,14 +454,14 @@
                           </select>
                         </div>
                         -->
-                        <div class="col-12 p-1 mt-1 bg-light">
+                        <div class="col-12  pl-0 pr-0 mt-1 bg-light">
                             <div class="input-group d-flex justify-content-between">
-                                <div class="c-orange1 p-2 flex-g">
+                                <div class="c-blue1 p-2 flex-g">
                                     <span class="title1"> <strong class="text-white">Productos</strong></span>      
                                 </div>
                             </div>
                             <table class="table table-hover pad-table text-center">
-                                <thead class="c-orange text-white">
+                                <thead class="c-plomo3 l-gris">
                                   <tr>
                                     <th scope="col">Cod Producto</th>
                                     <th scope="col">Categoria</th>
@@ -487,7 +493,7 @@
                       <form class="altura-form">
                           <div class="form-row">
             
-                            <div class="form-group col-8 text-white">
+                            <div class="form-group col-8 l-gris">
                               <label for="RasonSocila" class="m-0">Equivalencias: </label>
                               <input 
                               name="filterModalEquivalenceModal"
@@ -507,21 +513,21 @@
                            
                             </div>
                             -->
-                            <div class="col-12 p-1 mt-1 bg-light">
+                            <div class="col-12 pl-0 pr-0 mt-1 bg-light">
                                 <div class="input-group d-flex justify-content-between">
-                                    <div class="c-orange1 p-2 flex-g">
+                                    <div class="c-blue1 p-2 flex-g">
                                         <span class="title1"> <strong class="text-white">Equivalencia</strong></span>      
                                     </div>
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-outline-primary pt-0 pb-0 pl-2 pr-2 rounded-0 c-plomo text-white"
+                                        <button type="submit" class="btn btn-outline-primary pt-0 pb-0 pl-2 pr-2 rounded-0 c-blue2 text-white"
                                         (click)="reloadEquivalence()"
                                         >
-                                          <i class="material-icons">autorenew</i>
+                                          <i class="material-icons pos-icon">autorenew</i>
                                       </button>
                                     </div>
                                 </div>
                                 <table class="table table-hover pad-table text-center">
-                                    <thead class="c-orange text-white">
+                                    <thead class="c-plomo3 l-gris">
                                       <tr>
                                         <th scope="col">Codigo</th>
                                         <th scope="col">Descripcion</th>
@@ -546,13 +552,13 @@
             </div>
 
             <div class="text-center p-2">
-                <button type="submit" id="btn" gtipo="Guardar" class="btn btn-outline btn-success pl-5 pr-5 ml-2 font-12"
+                <button type="submit" id="btn" gtipo="Guardar" class="text-white btn btn-outline btn-success pl-5 pr-5 ml-2 font-12"
                 *ngIf="datosProduct.btnName == 'Modificar' " 
                 >
                     Guardar
                 </button>
 
-                <button type="submit" id="btn" gtipo="Guardar" class="text-white btn btn-outline c-red pl-5 pr-5 ml-2 font-12"
+                <button type="submit" id="btn" gtipo="Guardar" class="text-white l-gris btn btn-outline c-red pl-5 pr-5 ml-2 font-12"
                 (click)="modalEquivalence()"
                 >
                     Cancelar
@@ -563,22 +569,20 @@
     </div>
   </div>
 
-
-
   <!-- Modal  Vehiculos -->
 
   <div class="row fixed-top cont-modal" *ngIf="valModalVehicle">
       <div class="col-12 col-md-12 mt-2 mb-2">  
-          <div class="container c-plomo2 pt-2 pb-2">
-              <h6 class="text-center text-white">IMPORTAR VEHICULOS</h6>
-              <div class="col-12 p-1 mt-4 bg-light tm-equivalenciastabla">
+          <div class="container c-blank1 pt-2 pb-2">
+              <h6 class="text-center l-gris">IMPORTAR VEHICULOS</h6>
+              <div class="col-12 pl-0 pr-0 mt-4 bg-light tm-equivalenciastabla">
                 <div class="input-group d-flex justify-content-between">
-                    <div class="c-orange1 p-2 flex-g">
+                    <div class="c-blue1 p-2 flex-g">
                         <span class="title1"> <strong class="text-white">Vehiculos Existentes</strong></span>      
                     </div>
                 </div>
                 <table class="table table-hover pad-table text-center">
-                    <thead class="c-orange text-white">
+                    <thead class="c-plomo3 l-gris">
                       <tr>
                         <th scope="col">Marca</th>
                         <th scope="col">Modelo</th>
@@ -614,7 +618,7 @@
                       <form class="altura-form">
                         <div class="form-row">
           
-                          <div class="form-group col-8 text-white">
+                          <div class="form-group col-8 l-gris">
                             <label for="RasonSocila" class="m-0">Productos: </label>
                             <input 
                             name="filterModalproVehicleModal"
@@ -639,14 +643,14 @@
                           </div>
                         -->
   
-                          <div class="col-12 p-1 mt-1 bg-light">
+                          <div class="col-12 pl-0 pr-0 mt-1 bg-light">
                               <div class="input-group d-flex justify-content-between">
-                                  <div class="c-orange1 p-2 flex-g">
+                                  <div class="c-blue1 p-2 flex-g">
                                       <span class="title1"> <strong class="text-white">Productos</strong></span>      
                                   </div>
                               </div>
                               <table class="table table-hover pad-table text-center">
-                                  <thead class="c-orange text-white">
+                                  <thead class="c-plomo3 l-gris">
                                     <tr>
                                       <th scope="col">Cod Producto</th>
                                       <th scope="col">Categoria</th>
@@ -702,21 +706,21 @@
 
                             -->
       
-                              <div class="col-12 p-1 mt-1 bg-light">
+                              <div class="col-12 pl-0 pr-0 mt-1 bg-light">
                                   <div class="input-group d-flex justify-content-between">
-                                      <div class="c-orange1 p-2 flex-g">
+                                      <div class="c-blue1 p-2 flex-g">
                                           <span class="title1"> <strong class="text-white">Vehiculos</strong></span>      
                                       </div>
                                       <div class="input-group-append">
                                           <button type="submit" class="btn btn-outline-primary pt-0 pb-0 pl-2 pr-2 rounded-0 c-plomo text-white"
                                           (click)="reloadVehicle()"
                                           >
-                                            <i class="material-icons">autorenew</i>
+                                            <i class="material-icons pos-icon">autorenew</i>
                                         </button>
                                       </div>
                                   </div>
                                   <table class="table table-hover pad-table text-center">
-                                    <thead class="c-orange text-white">
+                                    <thead class="c-plomo3 l-gris">
                                       <tr>
                                         <th scope="col">Marca</th>
                                         <th scope="col">Modelo</th>
@@ -769,14 +773,16 @@
     </div>
 
 
-
+    
+    
+    
 
   <!-- Modal  Galerias -->
 
   <div class="row fixed-top cont-modal" *ngIf="valModalGallery">
       <div class="col-12 col-md-12 mt-2 mb-2">  
-          <div class="container c-plomo2 pt-2 pb-2">
-              <h6 class="text-center text-white">IMPORTAR GALERIAS</h6>
+          <div class="container c-blank1 pt-2 pb-2">
+              <h6 class="text-center l-gris">IMPORTAR GALERIAS</h6>
 
               <div class="row">
                   <div class="col-5 pt-4">
@@ -784,7 +790,7 @@
                         <div class="form-row">
           
                           <div class="form-group col-8 text-white">
-                            <label for="RasonSocila" class="m-0">Productos: </label>
+                            <label for="RasonSocila" class="m-0 l-gris">Productos: </label>
                             <input 
                             name="filterModalproGalleryModal"
                             [(ngModel)] = "filterModalproGalleryModal"
@@ -810,12 +816,12 @@
   
                           <div class="col-12 p-1 mt-1 bg-light">
                               <div class="input-group d-flex justify-content-between">
-                                  <div class="c-orange1 p-2 flex-g">
+                                  <div class="c-blue1 p-2 flex-g">
                                       <span class="title1"> <strong class="text-white">Productos</strong></span>      
                                   </div>
                               </div>
                               <table class="table table-hover pad-table text-center">
-                                  <thead class="c-orange text-white">
+                                  <thead class="c-plomo3 l-gris">
                                     <tr>
                                       <th scope="col">Cod Producto</th>
                                       <th scope="col">Categoria</th>
@@ -848,7 +854,7 @@
 
                               <div class="col-12 p-1 mt-1 bg-light">
                                   <div class="input-group d-flex justify-content-between">
-                                      <div class="c-orange1 p-2 flex-g">
+                                      <div class="c-blue1 p-2 flex-g">
                                           <span class="title1"> <strong class="text-white">Galeria Existente</strong></span>      
                                       </div>
                                   </div>
@@ -859,16 +865,16 @@
                                         <div class="col-sm-6 imgUp">
                                           <div class="imagePreview" (click)="viewGalleryPincipal(img0)"> <img [src]="img0" class="imgStore" > </div>
                                             <label class="removeImg">  <td (click)="RemoveImg0()"> <i class="material-icons">close</i> </td> </label>
-                                            <label class="btn btn-primary npad-form">
-                                              Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"  #Image accept="image/*" (change)="handleFileInput0($event.target.files)">
+                                            <label class="btn btn-primary npad-form c-blue1">
+                                              <strong>Upload</strong><input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"  #Image accept="image/*" (change)="handleFileInput0($event.target.files)">
                                             </label>
                                         </div>
 
                                         <div class="col-sm-6 imgUp ">
                                           <div class="imagePreview" (click)="viewGalleryPincipal(img1)"> <img [src]="img1" class="imgStore" > </div>
                                           <label class="removeImg">  <td (click)="RemoveImg1()"> <i class="material-icons">close</i> </td> </label>  
-                                          <label class="btn btn-primary npad-form">
-                                              Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"  #Image accept="image/*" (change)="handleFileInput1($event.target.files)">
+                                          <label class="btn btn-primary npad-form c-blue1">
+                                              <strong>Upload</strong><input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"  #Image accept="image/*" (change)="handleFileInput1($event.target.files)">
                                             </label>
                                         </div>
                                       
@@ -876,17 +882,17 @@
                                         <div class="col-sm-6 imgUp ">
                                           <div class="imagePreview" (click)="viewGalleryPincipal(img2)"> <img [src]="img2" class="imgStore" > </div>
                                           <label class="removeImg">  <td (click)="RemoveImg2()"> <i class="material-icons">close</i> </td> </label> 
-                                          <label class="btn btn-primary npad-form">
-                                              Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"  #Image accept="image/*" (change)="handleFileInput2($event.target.files)">
-                                            </label>
+                                          <label class="btn btn-primary npad-form c-blue1">
+                                            <strong>Upload</strong><input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"  #Image accept="image/*" (change)="handleFileInput2($event.target.files)">
+                                          </label>
                                         </div>
 
                                         <div class="col-sm-6 imgUp">
                                           <div class="imagePreview" (click)="viewGalleryPincipal(img3)"> <img [src]="img3" class="imgStore" > </div>
                                           <label class="removeImg">  <td (click)="RemoveImg3()"> <i class="material-icons">close</i> </td> </label>  
-                                          <label class="btn btn-primary npad-form">
-                                              Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" #Image accept="image/*" (change)="handleFileInput3($event.target.files)">
-                                            </label>
+                                          <label class="btn btn-primary npad-form c-blue1">
+                                            <strong>Upload</strong><input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" #Image accept="image/*" (change)="handleFileInput3($event.target.files)">
+                                          </label>
                                         </div>
                                       </div>
                                    </div>
@@ -896,7 +902,7 @@
                                   </div>
 
                                   <div class="input-group d-flex justify-content-between">
-                                      <div class="c-orange1 p-2 flex-g">
+                                      <div class="c-blue1 p-2 flex-g">
                                           <span class="title1"> <strong class="text-white">Galeria Producto Seleccionado</strong></span>      
                                       </div>
                                   </div>

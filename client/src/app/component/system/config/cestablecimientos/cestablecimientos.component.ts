@@ -10,8 +10,8 @@ import { WarehouseService } from 'src/app/services/system/config/warehouse/wareh
 })
 export class CestablecimientosComponent implements OnInit {
 
-  establecer: Store[] = [];
-  establecerMatrix : Store[] = [];
+  establecer: any = [];
+  establecerMatrix : any = [];
   warehouse : Store[]=[];
   
   filterName = ""; 
@@ -33,13 +33,32 @@ export class CestablecimientosComponent implements OnInit {
   }
 
   ngOnInit() {
-    
-    this.establecer = this.sestablishmentsService.establecer;
-    this.establecerMatrix = this.sestablishmentsService.establecerMatrix;
+    // Establecimiento Matriz
+    this.establecerMatr();
+    //Establecimiento Sucursal
+    this.establecerSucur();
     this.warehouse = this.warehouseService.warehouse;
-    
-    this.getListEstablecer(this.establecer, this.establecerMatrix);
     this.getListWareHouse(this.establecerMatrix, this.warehouse)
+  }
+
+
+  establecerMatr(){
+    this.sestablishmentsService.getEstablecerMatrixs().subscribe(
+      res =>{
+        this.establecerMatrix = res;
+      },
+      err => console.log(err)
+    );
+  }
+
+  establecerSucur(){
+    this.sestablishmentsService.getEstablecerSucursal().subscribe(
+      res =>{
+        this.establecer = res;
+        this.getListEstablecer(this.establecer, this.establecerMatrix);   
+      },
+      err => console.log(err)
+    );
   }
 
   //Union Json establecimientos
@@ -100,13 +119,14 @@ export class CestablecimientosComponent implements OnInit {
 
   // establecimientos Matriz
   neweStablecerMatrix($event){
-    //this.sestablishmentsService.establecerMatrixStore($event);
-    //this.establecerMatrix = this.sestablishmentsService.establecerMatrix;
-    // Arreglar al insertar base datos
-    console.log($event);
-    this.establecerMatrix = this.establecerMatrix.concat($event);
-    this.getListEstablecer(this.establecer, this.establecerMatrix)
-    console.log(this.establecerMatrix );
+    this.sestablishmentsService.saveEstablecerMatrix($event[0]).subscribe(
+      res =>{
+      alert(res["text"]);
+      },
+      err => console.log(err)
+    );
+    this.establecerMatr();
+    this.establecerSucur();
   }
 
   // establecimientos sucursal

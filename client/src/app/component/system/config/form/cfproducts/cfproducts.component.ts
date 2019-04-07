@@ -4,6 +4,10 @@ import { Product } from 'src/app/models/products';
 import { Vehicles } from 'src/app/models/vehicles';
 import { GalleryProduct } from 'src/app/models/galleryProduct';
 import { BrandsVehicle } from 'src/app/models/brandsVehicle';
+import { EquivalenceProduct } from 'src/app/models/equivalenceProduct';
+import { VehicleProduct } from 'src/app/models/vehicleProduct';
+import { Logs } from 'selenium-webdriver';
+
 
 @Component({
   selector: 'app-cfproducts',
@@ -36,6 +40,10 @@ export class CfproductsComponent implements OnInit {
 
   // Envio de formularios
   @Output() saveProduct = new EventEmitter<any>();
+  @Output() saveEquivalenceProduct = new EventEmitter<any>();
+  @Output() saveVehicleProduct = new EventEmitter<any>();
+
+  
 
   // variables modales
   valModalEquivalence =false;
@@ -87,6 +95,8 @@ export class CfproductsComponent implements OnInit {
   menuUnitProduct = false;
 
   product: Product [] = [];
+  equivalenceProduct: EquivalenceProduct[] = [];
+  vehicleProduct: VehicleProduct[] = [];
 
   newCodeProduct = "";
 
@@ -97,6 +107,7 @@ export class CfproductsComponent implements OnInit {
     this.resetInputs();
     this.newJsonEquivalencesForm = JSON.parse(JSON.stringify(this.jsonEquivalencesForm));
     this.newJsonVehiclesForm = JSON.parse(JSON.stringify(this.jsonVehicleForm));   
+
   }
 
   resetInputs(){
@@ -112,6 +123,8 @@ export class CfproductsComponent implements OnInit {
     this.datosProduct.idTypeProduct = 1;
     this.datosProduct.btnName = "Guardar";
 
+
+    
     //Img Default
     //this.datosGalleryProduct.imageStore = "../assets/img/img-default.jpg";
 
@@ -126,7 +139,8 @@ export class CfproductsComponent implements OnInit {
     
     if(this.validForm){
       if(this.datosProduct.btnName){
-        this.datosProduct.idProduct =  1;
+        this.datosProduct.idProduct =  8;
+        //Guardar Producto
         this.product=[{
           idProduct: this.datosProduct.idProduct,
           newCodeProduct: this.datosProduct.newCodeProduct,
@@ -148,12 +162,34 @@ export class CfproductsComponent implements OnInit {
           referenceC: this.datosProduct.referenceC,
           referenciaTypeProduct: this.datosProduct.referenciaTypeProduct
 
+        }];
+       
+      // Guardar Equivalencia
+      var newEquivalence = [];
+      for (let i = 0; i < this.datosEquivalenceProduct.length; i++) {
+        newEquivalence[i] =[{
+          idEquivalence: this.datosEquivalenceProduct[i].idEquivalence,
+          idProduct: this.datosProduct.idProduct
         }]
+        this.equivalenceProduct.push(newEquivalence[i]);
+      }
+
+      // Guardar Vehiculo
+      let newVehicle = [];
+
+      for (let j = 0; j < this.datosVehicleNewProduct.length; j++) {
+        newVehicle[j] = [{
+          idProduct: this.datosProduct.idProduct,
+          idVehicle: this.datosVehicleNewProduct[j].idVehicle
+        }]
+        this.vehicleProduct.push(newVehicle[j]);
+      }
+
+      
         this.saveProduct.emit(this.product);
+        this.saveEquivalenceProduct.emit(this.equivalenceProduct);
+        this.saveVehicleProduct.emit(this.vehicleProduct);
         this.resetInputs();
-
-
-        alert("guardar")
 
       }else{
         alert("Modificar")
@@ -236,6 +272,23 @@ export class CfproductsComponent implements OnInit {
     this.datosProduct.idBrandV = brandVehicle.idBrandV;
     this.menuBrandVehicle = !this.menuBrandVehicle;
   }
+  brandVehicleKeyUp(){
+    let letraB = this.datosProduct.nameBrandV;
+    let nuevoArr = this.jsonBrandVehicle;
+    let index = this.jsonBrandVehicle.map(function(d){
+      if (d.nameBrandV.toLowerCase() == letraB.toLowerCase()) {
+        return nuevoArr.indexOf(d);
+      }else{
+        return null; 
+      }
+    });
+    index = index.filter(Boolean);
+    if(index.length == 1){
+      this.datosProduct.nameBrandV = this.jsonBrandVehicle[index].nameBrandV;
+      this.datosProduct.idBrandV = this.jsonBrandVehicle[index].idBrandV;
+      this.menuBrandVehicle = !this.menuBrandVehicle;
+    }
+  }
 
   rescatadatoNameCategory(brandVehicle){
     this.datosProduct.nameCategory = brandVehicle.nameCategory;
@@ -243,22 +296,46 @@ export class CfproductsComponent implements OnInit {
     this.menuCatProduct = !this.menuCatProduct;
   }
 
+  CategoryKeyUp(){
+    let letraB = this.datosProduct.nameCategory;
+    let nuevoArr = this.jsonCategory;
+    let index = this.jsonCategory.map(function(d){
+      if (d.nameCategory.toLowerCase() == letraB.toLowerCase()) {
+        return nuevoArr.indexOf(d);
+      }else{
+        return null; 
+      }
+    });
+    index = index.filter(Boolean);
+    if(index.length == 1){
+      this.datosProduct.nameCategory = this.jsonCategory[index].nameCategory;
+      this.datosProduct.idCategory = this.jsonCategory[index].idCategory;
+      this.menuCatProduct = !this.menuCatProduct;
+    }
+  }
+
   rescatadatoPositionProduct(positionProduct){
     this.datosProduct.namePosition = positionProduct.namePosition;
     this.datosProduct.idPosition = positionProduct.idPosition;
     this.menuPosProduct = !this.menuPosProduct;
   }
+
   PositionkeyUp(){
-    const index = this.jsonPositionProduct.indexOf(this.jsonPositionProduct.namePosition);
-    this.datosProduct.namePosition = this.jsonPositionProduct[index].namePosition;
-    this.datosProduct.idPosition = this.jsonPositionProduct[index].namePosition;
-
-    console.log(index);
-    console.log(this.datosProduct.namePosition);
-    console.log(this.datosProduct.idPosition);
-    
-    
-
+    let letraB = this.datosProduct.namePosition;
+    let nuevoArr = this.jsonPositionProduct;
+    let index = this.jsonPositionProduct.map(function(d){
+      if (d.namePosition == letraB) {
+        return nuevoArr.indexOf(d);
+      }else{
+        return null; 
+      }
+    });
+    index = index.filter(Boolean);
+    if(index.length == 1){
+      this.datosProduct.namePosition = this.jsonPositionProduct[index].namePosition;
+      this.datosProduct.idPosition = this.jsonPositionProduct[index].idPosition;
+      this.menuPosProduct = !this.menuPosProduct;
+    }
   }
 
   rescatadatoSuperProduct(superProduct){
@@ -267,16 +344,71 @@ export class CfproductsComponent implements OnInit {
     this.menuSuperProduct = !this.menuSuperProduct;
   }
 
+  SuperKeyUp(){
+    let letraB = this.datosProduct.nameSuper;
+    let nuevoArr = this.jsonSuperProduct;
+    let index = this.jsonSuperProduct.map(function(d){
+      if (d.nameSuper.toLowerCase() == letraB.toLowerCase()) {
+        return nuevoArr.indexOf(d);
+      }else{
+        return null; 
+      }
+    });
+    index = index.filter(Boolean);
+    if(index.length == 1){
+      this.datosProduct.nameSuper = this.jsonSuperProduct[index].nameSuper;
+      this.datosProduct.idSuper = this.jsonSuperProduct[index].idSuper;
+      this.menuSuperProduct = !this.menuSuperProduct;
+    }
+  }
+
   rescatadatoBrandProduct(brandProduct){
     this.datosProduct.nameBrand = brandProduct.nameBrand;
     this.datosProduct.idBrand = brandProduct.idBrand;
     this.menuBrandProduct = !this.menuBrandProduct;
   }
 
+  BrandProductKeyUp(){
+    let letraB = this.datosProduct.nameBrand;
+    let nuevoArr = this.jsonBrandsProduct;
+    let index = this.jsonBrandsProduct.map(function(d){
+      if (d.nameBrand.toLowerCase() == letraB.toLowerCase()) {
+        return nuevoArr.indexOf(d);
+      }else{
+        return null; 
+      }
+    });
+    index = index.filter(Boolean);
+    if(index.length == 1){
+      this.datosProduct.nameBrand = this.jsonBrandsProduct[index].nameBrand;
+      this.datosProduct.idSuper = this.jsonBrandsProduct[index].idSuper;
+      this.menuBrandProduct = !this.menuBrandProduct;
+    }
+  }
+
   rescatadatoUnitProduct(unitProduct){
     this.datosProduct.nameUnity = unitProduct.nameUnity;
     this.datosProduct.idUnity = unitProduct.idUnity;
     this.menuUnitProduct = !this.menuUnitProduct;
+  }
+
+  UnitKeyUp(){
+    let letraB = this.datosProduct.nameUnity;
+    let nuevoArr = this.jsonUnitProduct;
+    let index = this.jsonUnitProduct.map(function(d){
+      if (d.nameUnity.toLowerCase() == letraB.toLowerCase()) {
+        return d;
+      }else{
+        return null; 
+      }
+    });
+    index = index.filter(Boolean);
+
+    if(index.length == 1){
+      this.datosProduct.nameUnity = index[0].nameUnity;
+      this.datosProduct.idUnity = index[0].idUnity;
+      this.menuUnitProduct = !this.menuUnitProduct;
+    }
   }
 
 
@@ -501,7 +633,6 @@ export class CfproductsComponent implements OnInit {
       reader.onload = (event: any) =>{
         this.img0= event.target.result;
         this.datosGalleryProduct.push({ urlGallery: this.img0}) 
-        console.log(this.datosGalleryProduct);
       }
       reader.readAsDataURL(this.fileToUpload);
     }else{
@@ -525,7 +656,6 @@ export class CfproductsComponent implements OnInit {
       reader.onload = (event: any) =>{
         this.img1= event.target.result;
         this.datosGalleryProduct.push({ urlGallery: this.img1}) 
-        console.log(this.datosGalleryProduct);
       }
       reader.readAsDataURL(this.fileToUpload);
     }else{
@@ -547,7 +677,6 @@ export class CfproductsComponent implements OnInit {
       reader.onload = (event: any) =>{
         this.img2= event.target.result;
         this.datosGalleryProduct.push({ urlGallery: this.img2}) 
-        console.log(this.datosGalleryProduct);
       }
       reader.readAsDataURL(this.fileToUpload);
     }else{
@@ -570,7 +699,6 @@ export class CfproductsComponent implements OnInit {
       reader.onload = (event: any) =>{
         this.img3= event.target.result;
         this.datosGalleryProduct.push({ urlGallery: this.img3}) 
-        console.log(this.datosGalleryProduct);
       }
       reader.readAsDataURL(this.fileToUpload);
     }else{

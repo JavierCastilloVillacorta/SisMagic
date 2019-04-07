@@ -11,19 +11,27 @@
 }
 
 .c-green{
-    background: #128351
+    background: #62a749;
 }
 
 .c-blue{
     background: #007cff;
   }
-  
+
+.c-blue1{
+  background: #143771;
+}
+
+.c-blue2{
+  background: #34568e;
+}
+
 .c-red{
   background: #7c2525;
 }
 
 .c-red1{
-  background: red ;
+  background: #da1a1a;
 }
 
 .c-plomo{
@@ -31,26 +39,45 @@
 }
 
 .c-plomo1{
-  background: #e5e5e5;
+  background: #e8e8e8;
 }
 
 .c-plomo2{
   background: #4b525d;
 }
 
+.c-plomo3{
+  background: #c7ccd5;
+}
+
+.c-blank1{
+  background: #eff1f5;
+}
+
+
+a{
+  color: #363d49;
+}
+.nav-tabs .nav-link.active{
+  color: #0056b3 !important;
+}
+
+.l-gris{
+  color: #2d333b;
+}
 
   /* Textos */
 @font-face {
-  font-family: 'Heebo';
+  font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Heebo'), local('Heebo-Regular'), url(https://fonts.gstatic.com/s/heebo/v4/NGS6v5_NC0k9P9H0TbFzsQ.woff2) format('woff2');
+  src: local('Open Sans'), local('Open Sans'), url(https://fonts.googleapis.com/css?family=Open+Sans) format('woff2');
   unicode-range: U+0590-05FF, U+20AA, U+25CC, U+FB1D-FB4F;
 }
 
 body{
-    font-family: 'Heebo', sans-serif !important;
-    font-size: 0.8em;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 0.75em;
 }
 
 .l-capital{
@@ -58,7 +85,7 @@ body{
 }
 
 .font-12{
-  font-size: 0.8em;
+  font-size: 0.75em;
 }
 
 

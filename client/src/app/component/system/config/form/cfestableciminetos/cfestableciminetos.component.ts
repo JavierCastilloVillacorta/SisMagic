@@ -1,13 +1,16 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, HostBinding } from '@angular/core';
 import { Store } from 'src/app/models/store';
 import { SestablishmentsService } from 'src/app/services/system/config/establishments/sestablishments.service';
 
 @Component({
   selector: 'app-cfestableciminetos',
   templateUrl: './cfestableciminetos.component.html',
-  styleUrls: ['./cfestableciminetos.component.css']
+  styleUrls: ['./cfestableciminetos.component.css'],
+  providers: [SestablishmentsService]
 })
 export class CfestableciminetosComponent implements OnInit {
+
+  @HostBinding('class') classes = 'row';
 
   fileToUpload: File = null;
   @Output() newStore = new EventEmitter<any>();
@@ -40,7 +43,7 @@ export class CfestableciminetosComponent implements OnInit {
     this.datosStore.stateStore = 1;
     this.datosStore.btnName = "Guardar";
     if(this.datosStore.imageStore == undefined || this.datosStore.imageStore == "" ){
-      this.datosStore.imageStore = "../assets/img/img-default.jpg";
+      this.datosStore.imageStore = "http://localhost:8080/SisMagic/server/img/img-default.jpg";
     }
   }
   
@@ -59,17 +62,20 @@ export class CfestableciminetosComponent implements OnInit {
       if(this.validForm){
   
         if(this.fileToUpload != null){
-          this.sestablishmentsService.postFile(this.captionImg,this.fileToUpload);
-          this.datosStore.imageStore = this.fileToUpload.name;
+          this.sestablishmentsService.postFile(this.captionImg,this.fileToUpload).subscribe(
+            data =>{
+              console.log('done');
+              
+              
+            }
+          );
+          this.datosStore.imageStore = "http://localhost:8080/SisMagic/server/img/establecer"+this.fileToUpload.name;
         }else{
-          this.datosStore.imageStore = "../assets/img/img-default.jpg";
+          this.datosStore.imageStore = "http://localhost:8080/SisMagic/server/img/img-default.jpg";
         }
     
         if(this.datosStore.idType == 1){
-          this.datosStore.idStore = 3;
-          this.datosStore.idMatrix = 0;
           this.establecerMatrix =[{ 
-            idStore: this.datosStore.idStore,
             nameStore: this.datosStore.nameStore, 
             rucStore: this.datosStore.rucStore, 
             addressStore : this.datosStore.addressStore,
@@ -77,7 +83,6 @@ export class CfestableciminetosComponent implements OnInit {
             stateStore: this.datosStore.stateStore,
             imageStore: this.datosStore.imageStore,
             phoneStore: this.datosStore.phoneStore,
-            idMatrix: this.datosStore.idMatrix,
             idType: this.datosStore.idType
            }]
           this.neweStablecerMatrix.emit(this.establecerMatrix);

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import confControllers  from '../../controllers/configuration/userControllers';
+import userConfControllers  from '../../controllers/configuration/userControllers';
 
 class ConfRoutes {
 
@@ -11,14 +11,14 @@ class ConfRoutes {
     }
 
     config(): void {
-        this.router.get('/', confControllers.listUser);
-        this.router.get('/:id', confControllers.getUser);
-        this.router.post('/', confControllers.createUser);
-        this.router.put('/:id', confControllers.updateUser);
-        this.router.delete('/:id', confControllers.deleteUser);
+        this.router.get('/', userConfControllers.listUser);
+        this.router.get('/:id', userConfControllers.getUser);
+        this.router.post('/', userConfControllers.createUser);
+        this.router.put('/:id', userConfControllers.updateUser);
+        this.router.delete('/:id', userConfControllers.deleteUser);
     }
 
 }
 
-const confRoutes =  new ConfRoutes();
-export default confRoutes.router;
+const userConfRoutes =  new ConfRoutes();
+export default userConfRoutes.router;

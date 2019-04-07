@@ -7,113 +7,52 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SestablishmentsService {
 
-  establecerMatrix : Store[] = [
-    { idStore: 1,
-      nameStore: "El Mago Principal 1", 
-      rucStore: "44444444444", 
-      addressStore : "Jr Ejemplo N° 123. ",
-      mobileStore : "123456789",
-      stateStore: 1,
-      imageStore: "direccion.img",
-      phoneStore: " 01 123456",
-      idMatrix: 0,
-      idType: 1
-    },
-    { idStore: 2,
-      nameStore: "El Mago Principal 2", 
-      rucStore: "44444444444", 
-      addressStore : "Jr Ejemplo N° 123. ",
-      mobileStore : "123456789",
-      stateStore: 1,
-      imageStore: "../assets/img/logo.png",
-      phoneStore: " 01 123456",
-      idMatrix: 0,
-      idType: 1
-    }
-    
-  ];
-
-
-
-  establecer: Store[] = [
-    { idStore: 3,
-      nameStore: "Sucursal 0 Tienda 1", 
-      rucStore: "44444444444", 
-      addressStore : "Jr Ejemplo N° 123. ",
-      mobileStore : "123456789",
-      stateStore: 2,
-      imageStore: "direccion.img",
-      phoneStore: " 01 123456",
-      idMatrix: 1,
-      idType: 2
-    },
-    { idStore: 4,
-      nameStore: "Sucursal 1 Tienda 1", 
-      rucStore: "44444444444", 
-      addressStore : "Jr Ejemplo N° 123. ",
-      mobileStore : "123456789",
-      stateStore: 1,
-      imageStore: "../assets/img/logo.png",
-      phoneStore: " 01 123456",
-      idMatrix: 1,
-      idType: 2
-    },
-
-    { idStore: 5,
-      nameStore: "Sucursal 2 Tienda 1", 
-      rucStore: "44444444444", 
-      addressStore : "Jr Ejemplo N° 123. ",
-      mobileStore : "123456789",
-      stateStore: 1,
-      imageStore: "direccion.img",
-      phoneStore: " 01 123456",
-      idMatrix: 1,
-      idType: 2
-    },
-    { idStore: 6,
-      nameStore: "Sucursal 0 Tienda 2", 
-      rucStore: "44444444444", 
-      addressStore : "Jr Ejemplo N° 123. ",
-      mobileStore : "123456789",
-      stateStore: 1,
-      imageStore: "direccion.img",
-      phoneStore: " 01 123456",
-      idMatrix: 2,
-      idType: 2
-    },
-    { idStore: 7,
-      nameStore: "Sucursal 1 Tienda 2", 
-      rucStore: "44444444444", 
-      addressStore : "Jr Ejemplo N° 123. ",
-      mobileStore : "123456789",
-      stateStore: 1,
-      imageStore: "direccion.img",
-      phoneStore: " 01 123456",
-      idMatrix: 2,
-      idType: 2
-    }
-  ];
+  API_URI = "http://localhost:3000";
 
   constructor(private http: HttpClient) { }
 
+  
+  // Sucursal Matris select *
+  getEstablecerMatrixs(){
+    return this.http.get(`${this.API_URI}/confi/estable`);
+  }
+  // Sucursal Sucursal select *
+  getEstablecerSucursal(){
+    return this.http.get(`${this.API_URI}/confi/sucur`);
+  }
+  
+
+
+
+  getEstablecerMatrix(id:string){
+    return this.http.get(`${this.API_URI}/confi/estable/${id}`)
+  }
+
+  updateEstablecerMatrix(id, updateEstablecer){
+    return this.http.put(`${this.API_URI}/confi/estable/${id}`, updateEstablecer)
+  }
+
+  saveEstablecerMatrix(store: Store){
+    return this.http.post(`${this.API_URI}/confi/estable/`, store)
+  }
+
+
+
 
   postFile(caption: string, fileToUpload: File){
-    const endpoint = "../../assets/img/";
+    console.log(caption);
+    console.log(fileToUpload);
+    
+    const endpoint = "SisMagic/server/img/establecer/";
     const formData: FormData = new FormData();
     formData.append('Image',fileToUpload, fileToUpload.name);
     formData.append('ImageCaption', caption);
+    console.log(this.http.post(endpoint, formData));
+    
     return this.http
       .post(endpoint, formData);
   }
+  
 
-
-  establecerStore(storeSave){
-      this.establecer = this.establecer.concat(storeSave);
-  }
- 
-
-  establecerMatrixStore(storeSave){
-      this.establecerMatrix = this.establecerMatrix.concat(storeSave);
-  }
 
 }

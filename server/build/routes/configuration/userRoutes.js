@@ -18,5 +18,5 @@ class ConfRoutes {
         this.router.delete('/:id', userControllers_1.default.deleteUser);
     }
 }
-const confRoutes = new ConfRoutes();
-exports.default = confRoutes.router;
+const userConfRoutes = new ConfRoutes();
+exports.default = userConfRoutes.router;

@@ -39,5 +39,10 @@
 
 .p-relative{
     position: relative;
-    top: 7px;
+    top: 3px;
+}
+
+#lista3 li div span{
+    position: absolute;
+    top: 8px;
 }

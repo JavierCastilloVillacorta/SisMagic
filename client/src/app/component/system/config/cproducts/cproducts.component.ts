@@ -124,7 +124,6 @@ export class CproductsComponent implements OnInit {
     this.jsonNewProduct(this.jsonCategory,this.jsonBrandsProduct,this.jsonUnitProduct,this.jsonPositionProduct,this.jsonSuperProduct,this.jsonBrandVehicle,this.jsonProduct);
     this.jsonNewVehicle(this.jsonGas, this.jsonBrandVehicle, this.jsonModelVehicle, this.jsonEngineVehicle, this.jsonVehicle);
 
-
    
   }
 
@@ -257,9 +256,6 @@ export class CproductsComponent implements OnInit {
       }
     }
 
-
-
-
     alert("Listado");
   }
 
@@ -346,6 +342,10 @@ export class CproductsComponent implements OnInit {
 
     this.datosProduct = $event;
 
+    this.datosVehicleNewProduct = [];
+    this.datosEquivalenceProduct = [];
+    this.datosGalleryProduct = [];
+
     //Datos Vehiculo porducto nivel 3
 
     for (var i = 0; i < this.jsonVehicleProduct.length ; i++) {
@@ -374,8 +374,6 @@ export class CproductsComponent implements OnInit {
         this.datosGalleryProduct.push(this.jsonGalleryProduct[i]);
       }
     }
-
-
 
     alert("Producto 03");
   }
@@ -494,6 +492,31 @@ export class CproductsComponent implements OnInit {
   // Super Producto
   saveSuperProduct($event){
     this.jsonSuperProduct = this.jsonSuperProduct.concat($event)
+  }
+
+  // Producto
+
+  saveProduct($event){
+    this.jsonProduct = this.jsonProduct.concat($event);
+    this.jsonNewProduct(this.jsonCategory,this.jsonBrandsProduct,this.jsonUnitProduct,this.jsonPositionProduct,this.jsonSuperProduct,this.jsonBrandVehicle,this.jsonProduct);
+  }
+
+  saveEquivalenceProduct($event){
+    console.log("Equivalencias");
+    
+    console.log($event);
+    
+    this.jsonEquivalenceProduct = this.jsonEquivalenceProduct.concat($event);
+    console.log(this.jsonEquivalenceProduct);
+    
+  }
+
+  $saveVehicleProduct($event){
+    console.log("Eventos");
+    
+    console.log($event);
+    this.jsonVehicleProduct = this.jsonVehicleProduct.concat($event);
+    console.log(this.jsonVehicleProduct);
   }
 
 
